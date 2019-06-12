@@ -5,20 +5,23 @@
  */
 package View;
 
-import javax.swing.JOptionPane;
+import Model.ConcessionaireDAO;
+import Model.ConcessionaireVO;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author Randy
+ * @author Melissa
  */
-public class UsersModule extends javax.swing.JFrame {
-
+public class ShowConcessionaireForm extends javax.swing.JFrame {
+    ConcessionaireVO objVO;
+    ConcessionaireDAO objDAO=new ConcessionaireDAO();
     /**
-     * Creates new form UsersModule
+     * Creates new form ShowConcessionaireForm
      */
-    public UsersModule() {
+    public ShowConcessionaireForm() {
         initComponents();
-        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -30,35 +33,22 @@ public class UsersModule extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPnlBanner = new javax.swing.JPanel();
         BackgroundBanner = new javax.swing.JLabel();
         jPnlWindowControls = new javax.swing.JPanel();
         MinimiceControl = new javax.swing.JLabel();
         CloseControl = new javax.swing.JLabel();
         jPnlBody = new javax.swing.JPanel();
         BackControl = new javax.swing.JLabel();
-        TitleView = new javax.swing.JLabel();
-        AddUserOption = new javax.swing.JLabel();
-        EditUserOption = new javax.swing.JLabel();
-        ViewUsersOption = new javax.swing.JLabel();
-        RemoveUserOption = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTableConcesionario = new javax.swing.JTable();
+        btnDesplegar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setUndecorated(true);
-        setResizable(false);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jPnlBanner.setBackground(new java.awt.Color(255, 255, 255));
-        jPnlBanner.setName("jPnlBanner"); // NOI18N
-        jPnlBanner.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         BackgroundBanner.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         BackgroundBanner.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Banner1.png"))); // NOI18N
         BackgroundBanner.setAlignmentY(0.0F);
         BackgroundBanner.setPreferredSize(new java.awt.Dimension(296, 577));
-        jPnlBanner.add(BackgroundBanner, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 575));
-
-        getContentPane().add(jPnlBanner, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 296, 575));
 
         jPnlWindowControls.setBackground(new java.awt.Color(255, 255, 255));
         jPnlWindowControls.setName(""); // NOI18N
@@ -89,13 +79,12 @@ public class UsersModule extends javax.swing.JFrame {
         });
         jPnlWindowControls.add(CloseControl, new org.netbeans.lib.awtextra.AbsoluteConstraints(713, 15, -1, 27));
 
-        getContentPane().add(jPnlWindowControls, new org.netbeans.lib.awtextra.AbsoluteConstraints(295, 0, 755, 45));
-
         jPnlBody.setBackground(new java.awt.Color(255, 255, 255));
         jPnlBody.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         BackControl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Back Control.png"))); // NOI18N
         BackControl.setAlignmentY(0.0F);
+        BackControl.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BackControl.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 BackControlMouseClicked(evt);
@@ -103,27 +92,52 @@ public class UsersModule extends javax.swing.JFrame {
         });
         jPnlBody.add(BackControl, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 20, 32));
 
-        TitleView.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Users Module.png"))); // NOI18N
-        TitleView.setAlignmentY(0.0F);
-        jPnlBody.add(TitleView, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 19, 198, 33));
+        jTableConcesionario.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Id", "Ruc", "Nombre", "Representante"
+            }
+        ));
+        jScrollPane1.setViewportView(jTableConcesionario);
 
-        AddUserOption.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Add User.png"))); // NOI18N
-        AddUserOption.setAlignmentY(0.0F);
-        jPnlBody.add(AddUserOption, new org.netbeans.lib.awtextra.AbsoluteConstraints(189, 103, 138, 154));
+        jPnlBody.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 190, 440, 170));
 
-        EditUserOption.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Edit User.png"))); // NOI18N
-        EditUserOption.setAlignmentY(0.0F);
-        jPnlBody.add(EditUserOption, new org.netbeans.lib.awtextra.AbsoluteConstraints(429, 103, 138, 154));
+        btnDesplegar.setText("Desplegar Concesionarios");
+        btnDesplegar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDesplegarActionPerformed(evt);
+            }
+        });
+        jPnlBody.add(btnDesplegar, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 130, -1, -1));
 
-        ViewUsersOption.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/View Users.png"))); // NOI18N
-        ViewUsersOption.setAlignmentY(0.0F);
-        jPnlBody.add(ViewUsersOption, new org.netbeans.lib.awtextra.AbsoluteConstraints(189, 286, 138, 167));
-
-        RemoveUserOption.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Remove User.png"))); // NOI18N
-        RemoveUserOption.setAlignmentY(0.0F);
-        jPnlBody.add(RemoveUserOption, new org.netbeans.lib.awtextra.AbsoluteConstraints(429, 299, 138, 154));
-
-        getContentPane().add(jPnlBody, new org.netbeans.lib.awtextra.AbsoluteConstraints(295, 45, 755, 530));
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(BackgroundBanner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPnlWindowControls, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPnlBody, javax.swing.GroupLayout.PREFERRED_SIZE, 755, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(BackgroundBanner, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 575, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jPnlWindowControls, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addComponent(jPnlBody, javax.swing.GroupLayout.PREFERRED_SIZE, 530, javax.swing.GroupLayout.PREFERRED_SIZE))))
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -133,16 +147,41 @@ public class UsersModule extends javax.swing.JFrame {
     }//GEN-LAST:event_MinimiceControlMouseClicked
 
     private void CloseControlMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CloseControlMouseClicked
-        int dialog = JOptionPane.YES_NO_OPTION;
-        int result = JOptionPane.showConfirmDialog(null, "Do you want to logout?", "Logout", dialog);
-        if(result==0)
-        System.exit(0);
+        ConfirmDialog dialog = new ConfirmDialog(this, true);
+        dialog.dialogText.setText("Do you want to logout?");
+        dialog.setVisible(true);
+        if(dialog.getReturnStatus()==1)
+        {
+            this.dispose();
+            new Login().setVisible(true);
+        }
     }//GEN-LAST:event_CloseControlMouseClicked
 
     private void BackControlMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BackControlMouseClicked
-        new MainAdmin().setVisible(true);
+        new ConcessionaireMenu().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_BackControlMouseClicked
+
+    private void btnDesplegarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDesplegarActionPerformed
+          ArrayList<ConcessionaireVO> arr=new ArrayList<ConcessionaireVO>();
+          
+                arr=objDAO.mostrarConcesionario();
+                DefaultTableModel modeloT=new DefaultTableModel();
+                this.jTableConcesionario.setModel(modeloT);
+                modeloT.addColumn("Id");
+                modeloT.addColumn("Ruc");
+                modeloT.addColumn("Nombre");
+                modeloT.addColumn("Representante");
+                Object[] columna=new Object[4];
+                for(int i=0; i<arr.size(); i++){
+                    columna[0]=arr.get(i).getIdConcesionario();
+                    columna[1]=arr.get(i).getRucConcesionario();
+                    columna[2]=arr.get(i).getNombreConcesionario();
+                    columna[3]=arr.get(i).getRepresentanteConcesionario();
+
+                    modeloT.addRow(columna);
+                }
+    }//GEN-LAST:event_btnDesplegarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -155,42 +194,39 @@ public class UsersModule extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Windows".equals(info.getName())) {
+                if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(UsersModule.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ShowConcessionaireForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(UsersModule.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ShowConcessionaireForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(UsersModule.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ShowConcessionaireForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(UsersModule.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ShowConcessionaireForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new UsersModule().setVisible(true);
+                new ShowConcessionaireForm().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel AddUserOption;
     private javax.swing.JLabel BackControl;
     private javax.swing.JLabel BackgroundBanner;
     private javax.swing.JLabel CloseControl;
-    private javax.swing.JLabel EditUserOption;
     private javax.swing.JLabel MinimiceControl;
-    private javax.swing.JLabel RemoveUserOption;
-    private javax.swing.JLabel TitleView;
-    private javax.swing.JLabel ViewUsersOption;
-    private javax.swing.JPanel jPnlBanner;
+    private javax.swing.JButton btnDesplegar;
     private javax.swing.JPanel jPnlBody;
     private javax.swing.JPanel jPnlWindowControls;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTableConcesionario;
     // End of variables declaration//GEN-END:variables
 }

@@ -9,14 +9,14 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author Randy
+ * @author Melissa
  */
-public class UsersModule extends javax.swing.JFrame {
+public class ConcessionaireMenu extends javax.swing.JFrame {
 
     /**
-     * Creates new form UsersModule
+     * Creates new form ConcessionaireMenu
      */
-    public UsersModule() {
+    public ConcessionaireMenu() {
         initComponents();
         this.setLocationRelativeTo(null);
     }
@@ -30,35 +30,23 @@ public class UsersModule extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPnlBanner = new javax.swing.JPanel();
         BackgroundBanner = new javax.swing.JLabel();
         jPnlWindowControls = new javax.swing.JPanel();
         MinimiceControl = new javax.swing.JLabel();
         CloseControl = new javax.swing.JLabel();
         jPnlBody = new javax.swing.JPanel();
         BackControl = new javax.swing.JLabel();
-        TitleView = new javax.swing.JLabel();
         AddUserOption = new javax.swing.JLabel();
         EditUserOption = new javax.swing.JLabel();
         ViewUsersOption = new javax.swing.JLabel();
         RemoveUserOption = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setUndecorated(true);
-        setResizable(false);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jPnlBanner.setBackground(new java.awt.Color(255, 255, 255));
-        jPnlBanner.setName("jPnlBanner"); // NOI18N
-        jPnlBanner.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         BackgroundBanner.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         BackgroundBanner.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Banner1.png"))); // NOI18N
         BackgroundBanner.setAlignmentY(0.0F);
         BackgroundBanner.setPreferredSize(new java.awt.Dimension(296, 577));
-        jPnlBanner.add(BackgroundBanner, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 575));
-
-        getContentPane().add(jPnlBanner, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 296, 575));
 
         jPnlWindowControls.setBackground(new java.awt.Color(255, 255, 255));
         jPnlWindowControls.setName(""); // NOI18N
@@ -89,8 +77,6 @@ public class UsersModule extends javax.swing.JFrame {
         });
         jPnlWindowControls.add(CloseControl, new org.netbeans.lib.awtextra.AbsoluteConstraints(713, 15, -1, 27));
 
-        getContentPane().add(jPnlWindowControls, new org.netbeans.lib.awtextra.AbsoluteConstraints(295, 0, 755, 45));
-
         jPnlBody.setBackground(new java.awt.Color(255, 255, 255));
         jPnlBody.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -103,27 +89,65 @@ public class UsersModule extends javax.swing.JFrame {
         });
         jPnlBody.add(BackControl, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 20, 32));
 
-        TitleView.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Users Module.png"))); // NOI18N
-        TitleView.setAlignmentY(0.0F);
-        jPnlBody.add(TitleView, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 19, 198, 33));
-
         AddUserOption.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Add User.png"))); // NOI18N
         AddUserOption.setAlignmentY(0.0F);
+        AddUserOption.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                AddUserOptionMouseClicked(evt);
+            }
+        });
         jPnlBody.add(AddUserOption, new org.netbeans.lib.awtextra.AbsoluteConstraints(189, 103, 138, 154));
 
         EditUserOption.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Edit User.png"))); // NOI18N
         EditUserOption.setAlignmentY(0.0F);
+        EditUserOption.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                EditUserOptionMouseClicked(evt);
+            }
+        });
         jPnlBody.add(EditUserOption, new org.netbeans.lib.awtextra.AbsoluteConstraints(429, 103, 138, 154));
 
         ViewUsersOption.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/View Users.png"))); // NOI18N
         ViewUsersOption.setAlignmentY(0.0F);
+        ViewUsersOption.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ViewUsersOptionMouseClicked(evt);
+            }
+        });
         jPnlBody.add(ViewUsersOption, new org.netbeans.lib.awtextra.AbsoluteConstraints(189, 286, 138, 167));
 
         RemoveUserOption.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Remove User.png"))); // NOI18N
         RemoveUserOption.setAlignmentY(0.0F);
+        RemoveUserOption.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                RemoveUserOptionMouseClicked(evt);
+            }
+        });
         jPnlBody.add(RemoveUserOption, new org.netbeans.lib.awtextra.AbsoluteConstraints(429, 299, 138, 154));
 
-        getContentPane().add(jPnlBody, new org.netbeans.lib.awtextra.AbsoluteConstraints(295, 45, 755, 530));
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(BackgroundBanner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPnlWindowControls, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPnlBody, javax.swing.GroupLayout.PREFERRED_SIZE, 755, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(BackgroundBanner, javax.swing.GroupLayout.PREFERRED_SIZE, 575, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPnlWindowControls, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addComponent(jPnlBody, javax.swing.GroupLayout.PREFERRED_SIZE, 530, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -139,10 +163,31 @@ public class UsersModule extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_CloseControlMouseClicked
 
+    private void AddUserOptionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddUserOptionMouseClicked
+        new AddConcessionaireForm().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_AddUserOptionMouseClicked
+
     private void BackControlMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BackControlMouseClicked
         new MainAdmin().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_BackControlMouseClicked
+
+    private void EditUserOptionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EditUserOptionMouseClicked
+        // TODO add your handling code here:
+        new ModifyConcessionarieForm().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_EditUserOptionMouseClicked
+
+    private void RemoveUserOptionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RemoveUserOptionMouseClicked
+        new DeleteConcessionarieForm().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_RemoveUserOptionMouseClicked
+
+    private void ViewUsersOptionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ViewUsersOptionMouseClicked
+        new ShowConcessionaireForm().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_ViewUsersOptionMouseClicked
 
     /**
      * @param args the command line arguments
@@ -155,26 +200,26 @@ public class UsersModule extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Windows".equals(info.getName())) {
+                if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(UsersModule.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ConcessionaireMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(UsersModule.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ConcessionaireMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(UsersModule.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ConcessionaireMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(UsersModule.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ConcessionaireMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new UsersModule().setVisible(true);
+                new ConcessionaireMenu().setVisible(true);
             }
         });
     }
@@ -187,9 +232,7 @@ public class UsersModule extends javax.swing.JFrame {
     private javax.swing.JLabel EditUserOption;
     private javax.swing.JLabel MinimiceControl;
     private javax.swing.JLabel RemoveUserOption;
-    private javax.swing.JLabel TitleView;
     private javax.swing.JLabel ViewUsersOption;
-    private javax.swing.JPanel jPnlBanner;
     private javax.swing.JPanel jPnlBody;
     private javax.swing.JPanel jPnlWindowControls;
     // End of variables declaration//GEN-END:variables

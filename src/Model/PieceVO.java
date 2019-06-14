@@ -4,7 +4,7 @@ package Model;
  *
  * @author Randy
  */
-public class Piece {
+public class PieceVO {
     private int idPiece;
     private String namePiece;
     private String categoryPiece;

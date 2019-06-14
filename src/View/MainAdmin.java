@@ -111,6 +111,11 @@ public class MainAdmin extends javax.swing.JFrame {
         ConcessionerOption.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Concessioner.png"))); // NOI18N
         ConcessionerOption.setAlignmentY(0.0F);
         ConcessionerOption.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        ConcessionerOption.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ConcessionerOptionMouseClicked(evt);
+            }
+        });
         jPnlBody.add(ConcessionerOption, new org.netbeans.lib.awtextra.AbsoluteConstraints(309, 99, -1, 157));
 
         WarehouseOption.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Warehouse.png"))); // NOI18N
@@ -126,6 +131,11 @@ public class MainAdmin extends javax.swing.JFrame {
         UsersOption.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Users.png"))); // NOI18N
         UsersOption.setAlignmentY(0.0F);
         UsersOption.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        UsersOption.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                UsersOptionMouseClicked(evt);
+            }
+        });
         jPnlBody.add(UsersOption, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 298, 139, 156));
 
         getContentPane().add(jPnlBody, new org.netbeans.lib.awtextra.AbsoluteConstraints(295, 45, 755, 530));
@@ -152,6 +162,16 @@ public class MainAdmin extends javax.swing.JFrame {
         new Warehouse().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_WarehouseOptionMouseClicked
+
+    private void ConcessionerOptionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ConcessionerOptionMouseClicked
+        new Concessioner().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_ConcessionerOptionMouseClicked
+
+    private void UsersOptionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UsersOptionMouseClicked
+        new UsersModule().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_UsersOptionMouseClicked
 
     /**
      * @param args the command line arguments

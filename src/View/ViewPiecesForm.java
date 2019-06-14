@@ -13,7 +13,7 @@ import Model.TextPrompt;
  * @author Randy
  */
 public class ViewPiecesForm extends javax.swing.JFrame {
-    PieceDAO piece = new PieceDAO();
+    PieceDAO pieceDAO = new PieceDAO();
     String idPiece="";
     
     /**
@@ -25,7 +25,7 @@ public class ViewPiecesForm extends javax.swing.JFrame {
         
         TextPrompt searchHint = new TextPrompt("Search", txtSearch);
         
-        piece.viewPiece(tblPieces);
+        pieceDAO.viewPiece(tblPieces);
     }
 
     /**
@@ -247,6 +247,7 @@ public class ViewPiecesForm extends javax.swing.JFrame {
             idPiece = tblPieces.getValueAt(row, 0).toString();
             //Buscar datos en la tabla segun el id para cargarlos en el otro formulario
             new EditPieceForm(idPiece).setVisible(true);
+            this.dispose();
         }
     }//GEN-LAST:event_MenuItemEditActionPerformed
 
@@ -260,8 +261,11 @@ public class ViewPiecesForm extends javax.swing.JFrame {
             dialog.setVisible(true);
             if(dialog.getReturnStatus()==1)
             {
+                pieceDAO.deletePiece(Integer.parseInt(idPiece));
                 //Sentencia SQL para eliminar dato de la tabla
                 //Actualizar Tabla
+                new Warehouse().setVisible(true);
+                this.dispose();
             }
         }
     }//GEN-LAST:event_MenuItemDeleteActionPerformed

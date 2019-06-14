@@ -96,6 +96,12 @@ public class UsersModule extends javax.swing.JFrame {
 
         BackControl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Back Control.png"))); // NOI18N
         BackControl.setAlignmentY(0.0F);
+        BackControl.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        BackControl.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BackControlMouseClicked(evt);
+            }
+        });
         jPnlBody.add(BackControl, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 20, 32));
 
         TitleView.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Users Module.png"))); // NOI18N
@@ -128,11 +134,20 @@ public class UsersModule extends javax.swing.JFrame {
     }//GEN-LAST:event_MinimiceControlMouseClicked
 
     private void CloseControlMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CloseControlMouseClicked
-        int dialog = JOptionPane.YES_NO_OPTION;
-        int result = JOptionPane.showConfirmDialog(null, "Do you want to logout?", "Logout", dialog);
-        if(result==0)
-        System.exit(0);
+        ConfirmDialog dialog = new ConfirmDialog(this, true);
+        dialog.dialogText.setText("Do you want to logout?");
+        dialog.setVisible(true);
+        if(dialog.getReturnStatus()==1)
+        {
+            new Login().setVisible(true);
+            this.dispose();
+        }
     }//GEN-LAST:event_CloseControlMouseClicked
+
+    private void BackControlMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BackControlMouseClicked
+        new Login().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_BackControlMouseClicked
 
     /**
      * @param args the command line arguments

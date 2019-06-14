@@ -9,12 +9,12 @@ package View;
  *
  * @author Randy
  */
-public class Warehouse extends javax.swing.JFrame {
+public class Concessioner extends javax.swing.JFrame {
 
     /**
-     * Creates new form Warehouse
+     * Creates new form Concessioner
      */
-    public Warehouse() {
+    public Concessioner() {
         initComponents();
         this.setLocationRelativeTo(null);
     }
@@ -34,10 +34,10 @@ public class Warehouse extends javax.swing.JFrame {
         jPnlBody = new javax.swing.JPanel();
         BackControl = new javax.swing.JLabel();
         TitleView = new javax.swing.JLabel();
-        AddPieceOption = new javax.swing.JLabel();
-        EdtPieceOption = new javax.swing.JLabel();
-        ViewPiecesOption = new javax.swing.JLabel();
-        RemovePieceOption = new javax.swing.JLabel();
+        AddConcessionerOption = new javax.swing.JLabel();
+        EditConcessionerOption = new javax.swing.JLabel();
+        ViewConcessionerOption = new javax.swing.JLabel();
+        RemoveConcessionerOption = new javax.swing.JLabel();
         jPnlBanner = new javax.swing.JPanel();
         BackgroundBanner = new javax.swing.JLabel();
 
@@ -90,49 +90,48 @@ public class Warehouse extends javax.swing.JFrame {
         });
         jPnlBody.add(BackControl, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 20, 32));
 
-        TitleView.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Warehouse Text.png"))); // NOI18N
+        TitleView.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Concessioner Text.png"))); // NOI18N
         TitleView.setAlignmentY(0.0F);
         jPnlBody.add(TitleView, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 19, 230, 33));
 
-        AddPieceOption.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Add Piece.png"))); // NOI18N
-        AddPieceOption.setAlignmentY(0.0F);
-        AddPieceOption.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        AddPieceOption.addMouseListener(new java.awt.event.MouseAdapter() {
+        AddConcessionerOption.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Add Concessioner.png"))); // NOI18N
+        AddConcessionerOption.setAlignmentY(0.0F);
+        AddConcessionerOption.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                AddPieceOptionMouseClicked(evt);
+                AddConcessionerOptionMouseClicked(evt);
             }
         });
-        jPnlBody.add(AddPieceOption, new org.netbeans.lib.awtextra.AbsoluteConstraints(187, 75, 140, 185));
+        jPnlBody.add(AddConcessionerOption, new org.netbeans.lib.awtextra.AbsoluteConstraints(189, 142, 163, 115));
 
-        EdtPieceOption.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Edit Piece.png"))); // NOI18N
-        EdtPieceOption.setAlignmentY(0.0F);
-        EdtPieceOption.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        EdtPieceOption.addMouseListener(new java.awt.event.MouseAdapter() {
+        EditConcessionerOption.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Edit Concessioner.png"))); // NOI18N
+        EditConcessionerOption.setAlignmentY(0.0F);
+        EditConcessionerOption.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        EditConcessionerOption.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                EdtPieceOptionMouseClicked(evt);
+                EditConcessionerOptionMouseClicked(evt);
             }
         });
-        jPnlBody.add(EdtPieceOption, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 103, 140, 157));
+        jPnlBody.add(EditConcessionerOption, new org.netbeans.lib.awtextra.AbsoluteConstraints(426, 139, 166, 118));
 
-        ViewPiecesOption.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/View Piece.png"))); // NOI18N
-        ViewPiecesOption.setAlignmentY(0.0F);
-        ViewPiecesOption.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        ViewPiecesOption.addMouseListener(new java.awt.event.MouseAdapter() {
+        ViewConcessionerOption.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/View Concessioners.png"))); // NOI18N
+        ViewConcessionerOption.setAlignmentY(0.0F);
+        ViewConcessionerOption.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        ViewConcessionerOption.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                ViewPiecesOptionMouseClicked(evt);
+                ViewConcessionerOptionMouseClicked(evt);
             }
         });
-        jPnlBody.add(ViewPiecesOption, new org.netbeans.lib.awtextra.AbsoluteConstraints(187, 292, 140, 164));
+        jPnlBody.add(ViewConcessionerOption, new org.netbeans.lib.awtextra.AbsoluteConstraints(179, 302, 181, 151));
 
-        RemovePieceOption.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Remove Piece.png"))); // NOI18N
-        RemovePieceOption.setAlignmentY(0.0F);
-        RemovePieceOption.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        RemovePieceOption.addMouseListener(new java.awt.event.MouseAdapter() {
+        RemoveConcessionerOption.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Remove Concessioner.png"))); // NOI18N
+        RemoveConcessionerOption.setAlignmentY(0.0F);
+        RemoveConcessionerOption.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        RemoveConcessionerOption.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                RemovePieceOptionMouseClicked(evt);
+                RemoveConcessionerOptionMouseClicked(evt);
             }
         });
-        jPnlBody.add(RemovePieceOption, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 273, 140, 183));
+        jPnlBody.add(RemoveConcessionerOption, new org.netbeans.lib.awtextra.AbsoluteConstraints(407, 336, 205, 117));
 
         getContentPane().add(jPnlBody, new org.netbeans.lib.awtextra.AbsoluteConstraints(295, 45, 755, 530));
 
@@ -167,29 +166,29 @@ public class Warehouse extends javax.swing.JFrame {
     }//GEN-LAST:event_CloseControlMouseClicked
 
     private void BackControlMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BackControlMouseClicked
-        new FactoryModule().setVisible(true);
+        new MainAdmin().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_BackControlMouseClicked
 
-    private void AddPieceOptionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddPieceOptionMouseClicked
-        new AddPiecesForm().setVisible(true);
+    private void AddConcessionerOptionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddConcessionerOptionMouseClicked
+        new AddConcessionerForm().setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_AddPieceOptionMouseClicked
+    }//GEN-LAST:event_AddConcessionerOptionMouseClicked
 
-    private void EdtPieceOptionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EdtPieceOptionMouseClicked
-        new ViewPiecesForm().setVisible(true);
+    private void EditConcessionerOptionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EditConcessionerOptionMouseClicked
+        new ModifyConcessionerForm().setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_EdtPieceOptionMouseClicked
+    }//GEN-LAST:event_EditConcessionerOptionMouseClicked
 
-    private void ViewPiecesOptionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ViewPiecesOptionMouseClicked
-        new ViewPiecesForm().setVisible(true);
+    private void ViewConcessionerOptionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ViewConcessionerOptionMouseClicked
+        new ViewConcessionerForm().setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_ViewPiecesOptionMouseClicked
+    }//GEN-LAST:event_ViewConcessionerOptionMouseClicked
 
-    private void RemovePieceOptionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RemovePieceOptionMouseClicked
-        new ViewPiecesForm().setVisible(true);
+    private void RemoveConcessionerOptionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RemoveConcessionerOptionMouseClicked
+        new DeleteConcessionerForm().setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_RemovePieceOptionMouseClicked
+    }//GEN-LAST:event_RemoveConcessionerOptionMouseClicked
 
     /**
      * @param args the command line arguments
@@ -208,34 +207,34 @@ public class Warehouse extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Warehouse.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Concessioner.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Warehouse.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Concessioner.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Warehouse.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Concessioner.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Warehouse.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Concessioner.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Warehouse().setVisible(true);
+                new Concessioner().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel AddPieceOption;
+    private javax.swing.JLabel AddConcessionerOption;
     private javax.swing.JLabel BackControl;
     private javax.swing.JLabel BackgroundBanner;
     private javax.swing.JLabel CloseControl;
-    private javax.swing.JLabel EdtPieceOption;
+    private javax.swing.JLabel EditConcessionerOption;
     private javax.swing.JLabel MinimiceControl;
-    private javax.swing.JLabel RemovePieceOption;
+    private javax.swing.JLabel RemoveConcessionerOption;
     private javax.swing.JLabel TitleView;
-    private javax.swing.JLabel ViewPiecesOption;
+    private javax.swing.JLabel ViewConcessionerOption;
     private javax.swing.JPanel jPnlBanner;
     private javax.swing.JPanel jPnlBody;
     private javax.swing.JPanel jPnlWindowControls;

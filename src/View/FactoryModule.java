@@ -80,6 +80,11 @@ public class FactoryModule extends javax.swing.JFrame {
         BackControl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Back Control.png"))); // NOI18N
         BackControl.setAlignmentY(0.0F);
         BackControl.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        BackControl.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BackControlMouseClicked(evt);
+            }
+        });
         jPnlBody.add(BackControl, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 20, 32));
 
         TitleView.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Factory Module.png"))); // NOI18N
@@ -132,6 +137,11 @@ public class FactoryModule extends javax.swing.JFrame {
         new Warehouse().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_WarehouseOptionMouseClicked
+
+    private void BackControlMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BackControlMouseClicked
+        new Login().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_BackControlMouseClicked
 
     /**
      * @param args the command line arguments

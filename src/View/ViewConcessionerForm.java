@@ -5,16 +5,24 @@
  */
 package View;
 
+import Model.ConcessionerDAO;
+import Model.ConcessionerVO;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Randy
  */
-public class Warehouse extends javax.swing.JFrame {
+public class ViewConcessionerForm extends javax.swing.JFrame {
 
+    ConcessionerDAO concessionerDAO = new ConcessionerDAO();
+    ConcessionerVO concessionerVO;
     /**
-     * Creates new form Warehouse
+     * Creates new form ViewConcessionerForm
      */
-    public Warehouse() {
+    public ViewConcessionerForm() {
+        RefreshTable();
         initComponents();
         this.setLocationRelativeTo(null);
     }
@@ -34,10 +42,9 @@ public class Warehouse extends javax.swing.JFrame {
         jPnlBody = new javax.swing.JPanel();
         BackControl = new javax.swing.JLabel();
         TitleView = new javax.swing.JLabel();
-        AddPieceOption = new javax.swing.JLabel();
-        EdtPieceOption = new javax.swing.JLabel();
-        ViewPiecesOption = new javax.swing.JLabel();
-        RemovePieceOption = new javax.swing.JLabel();
+        UnderlineTitleView = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tblConcessioners = new rojerusan.RSTableMetro();
         jPnlBanner = new javax.swing.JPanel();
         BackgroundBanner = new javax.swing.JLabel();
 
@@ -90,49 +97,60 @@ public class Warehouse extends javax.swing.JFrame {
         });
         jPnlBody.add(BackControl, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 20, 32));
 
-        TitleView.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Warehouse Text.png"))); // NOI18N
+        TitleView.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/View Concessioners Text.png"))); // NOI18N
         TitleView.setAlignmentY(0.0F);
-        jPnlBody.add(TitleView, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 19, 230, 33));
+        jPnlBody.add(TitleView, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 19, 320, 33));
 
-        AddPieceOption.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Add Piece.png"))); // NOI18N
-        AddPieceOption.setAlignmentY(0.0F);
-        AddPieceOption.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        AddPieceOption.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                AddPieceOptionMouseClicked(evt);
-            }
-        });
-        jPnlBody.add(AddPieceOption, new org.netbeans.lib.awtextra.AbsoluteConstraints(187, 75, 140, 185));
+        UnderlineTitleView.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Title View Underline.png"))); // NOI18N
+        UnderlineTitleView.setAlignmentY(0.0F);
+        jPnlBody.add(UnderlineTitleView, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 63, 540, 3));
 
-        EdtPieceOption.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Edit Piece.png"))); // NOI18N
-        EdtPieceOption.setAlignmentY(0.0F);
-        EdtPieceOption.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        EdtPieceOption.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                EdtPieceOptionMouseClicked(evt);
+        tblConcessioners.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Id", "Name", "RUC", "Legal Representative"
             }
-        });
-        jPnlBody.add(EdtPieceOption, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 103, 140, 157));
+        ));
+        tblConcessioners.setAlignmentX(0.0F);
+        tblConcessioners.setAlignmentY(0.0F);
+        tblConcessioners.setAltoHead(24);
+        tblConcessioners.setColorBackgoundHead(new java.awt.Color(238, 112, 82));
+        tblConcessioners.setColorBordeFilas(new java.awt.Color(112, 112, 112));
+        tblConcessioners.setColorBordeHead(new java.awt.Color(112, 112, 112));
+        tblConcessioners.setColorFilasBackgound1(new java.awt.Color(112, 112, 112));
+        tblConcessioners.setColorFilasBackgound2(new java.awt.Color(255, 255, 255));
+        tblConcessioners.setColorFilasForeground1(new java.awt.Color(36, 47, 65));
+        tblConcessioners.setColorFilasForeground2(new java.awt.Color(36, 47, 65));
+        tblConcessioners.setColorSelBackgound(new java.awt.Color(238, 112, 82));
+        tblConcessioners.setFillsViewportHeight(true);
+        tblConcessioners.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
+        tblConcessioners.setFuenteFilas(new java.awt.Font("Roboto", 0, 16)); // NOI18N
+        tblConcessioners.setFuenteFilasSelect(new java.awt.Font("Roboto", 0, 16)); // NOI18N
+        tblConcessioners.setFuenteHead(new java.awt.Font("Roboto", 0, 16)); // NOI18N
+        tblConcessioners.setGridColor(new java.awt.Color(153, 153, 153));
+        tblConcessioners.setGrosorBordeFilas(0);
+        tblConcessioners.setMultipleSeleccion(false);
+        tblConcessioners.setPreferredSize(new java.awt.Dimension(595, 350));
+        tblConcessioners.setRowHeight(24);
+        tblConcessioners.getTableHeader().setReorderingAllowed(false);
+        jScrollPane2.setViewportView(tblConcessioners);
 
-        ViewPiecesOption.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/View Piece.png"))); // NOI18N
-        ViewPiecesOption.setAlignmentY(0.0F);
-        ViewPiecesOption.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        ViewPiecesOption.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                ViewPiecesOptionMouseClicked(evt);
-            }
-        });
-        jPnlBody.add(ViewPiecesOption, new org.netbeans.lib.awtextra.AbsoluteConstraints(187, 292, 140, 164));
-
-        RemovePieceOption.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Remove Piece.png"))); // NOI18N
-        RemovePieceOption.setAlignmentY(0.0F);
-        RemovePieceOption.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        RemovePieceOption.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                RemovePieceOptionMouseClicked(evt);
-            }
-        });
-        jPnlBody.add(RemovePieceOption, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 273, 140, 183));
+        jPnlBody.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(102, 98, 560, 358));
 
         getContentPane().add(jPnlBody, new org.netbeans.lib.awtextra.AbsoluteConstraints(295, 45, 755, 530));
 
@@ -167,30 +185,32 @@ public class Warehouse extends javax.swing.JFrame {
     }//GEN-LAST:event_CloseControlMouseClicked
 
     private void BackControlMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BackControlMouseClicked
-        new FactoryModule().setVisible(true);
+        new Concessioner().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_BackControlMouseClicked
 
-    private void AddPieceOptionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddPieceOptionMouseClicked
-        new AddPiecesForm().setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_AddPieceOptionMouseClicked
+    private void RefreshTable()
+    {
+        ArrayList<ConcessionerVO> array = new ArrayList<ConcessionerVO>();
+          
+        array = concessionerDAO.viewConcessioner();
+        DefaultTableModel model = new DefaultTableModel();
+        this.tblConcessioners.setModel(model);
+        model.addColumn("Id");
+        model.addColumn("Name");
+        model.addColumn("RUC");
+        model.addColumn("Legal Representative");
+        Object[] column=new Object[4];
+        for(int i=0; i<array.size(); i++){
+            column[0]=array.get(i).getIdConcessioner();
+            column[1]=array.get(i).getNameConcessioner();
+            column[2]=array.get(i).getRucConcessioner();
+            column[3]=array.get(i).getLegalRepresentativeConcessioner();
 
-    private void EdtPieceOptionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EdtPieceOptionMouseClicked
-        new ViewPiecesForm().setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_EdtPieceOptionMouseClicked
-
-    private void ViewPiecesOptionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ViewPiecesOptionMouseClicked
-        new ViewPiecesForm().setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_ViewPiecesOptionMouseClicked
-
-    private void RemovePieceOptionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RemovePieceOptionMouseClicked
-        new ViewPiecesForm().setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_RemovePieceOptionMouseClicked
-
+            model.addRow(column);
+        }
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -202,42 +222,41 @@ public class Warehouse extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Windows".equals(info.getName())) {
+                if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Warehouse.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewConcessionerForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Warehouse.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewConcessionerForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Warehouse.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewConcessionerForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Warehouse.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewConcessionerForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Warehouse().setVisible(true);
+                new ViewConcessionerForm().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel AddPieceOption;
     private javax.swing.JLabel BackControl;
     private javax.swing.JLabel BackgroundBanner;
     private javax.swing.JLabel CloseControl;
-    private javax.swing.JLabel EdtPieceOption;
     private javax.swing.JLabel MinimiceControl;
-    private javax.swing.JLabel RemovePieceOption;
     private javax.swing.JLabel TitleView;
-    private javax.swing.JLabel ViewPiecesOption;
+    private javax.swing.JLabel UnderlineTitleView;
     private javax.swing.JPanel jPnlBanner;
     private javax.swing.JPanel jPnlBody;
     private javax.swing.JPanel jPnlWindowControls;
+    private javax.swing.JScrollPane jScrollPane2;
+    private rojerusan.RSTableMetro tblConcessioners;
     // End of variables declaration//GEN-END:variables
 }

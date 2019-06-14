@@ -24,7 +24,7 @@ public class PieceDAO {
         connection = new Link();
     }
     
-    public void registerProduct(String namePiece, String categoryPiece, String descriptionPiece, int quantityPiece, float pricePiece)
+    public void registerPiece(String namePiece, String categoryPiece, String descriptionPiece, int quantityPiece, float pricePiece)
     {
         Connection link = connection.getConnection();
         try
@@ -51,7 +51,7 @@ public class PieceDAO {
         }
     }
     
-    public void deleteProduct(int idPiece)
+    public void deletePiece(int idPiece)
     {
         Connection link = connection.getConnection();
         try
@@ -102,7 +102,7 @@ public class PieceDAO {
     public void viewPiece(JTable tblPieces)
     {
         Connection link = connection.getConnection();
-        Piece piece = new Piece();
+        PieceVO piece = new PieceVO();
         try
         {
             String[]data = new String[6];

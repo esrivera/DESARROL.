@@ -319,7 +319,7 @@ public class AddPiecesForm extends javax.swing.JFrame {
         }
         else
         {
-            pieceDAO.registerProduct(txtPieceName.getText(), txtPieceCategory.getText(), txtPieceDescription.getText(),
+            pieceDAO.registerPiece(txtPieceName.getText(), txtPieceCategory.getText(), txtPieceDescription.getText(),
                 Integer.parseInt(txtPieceQuantity.getText()), Float.parseFloat(txtPiecePrice.getText()));
             txtPieceName.setText("");
             txtPieceCategory.setText("");

@@ -8,9 +8,9 @@ package Model;
 import java.sql.*;
 
 public class Link {
-    private static final String DATABASE ="Motos";
+    private static final String DATABASE ="motos";
     private static final String USERNAME = "root";
-    private static final String PASSWORD = "";
+    private static final String PASSWORD = "1234";
     private static final String URL = "jdbc:mysql://localhost/" + DATABASE;
     
     public static Connection getConnection()

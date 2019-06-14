@@ -96,7 +96,10 @@ public class UsersModule extends javax.swing.JFrame {
 
         BackControl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Back Control.png"))); // NOI18N
         BackControl.setAlignmentY(0.0F);
+<<<<<<< HEAD
         BackControl.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+=======
+>>>>>>> b744569fb9480f99472742fbb88a021fdef62361
         BackControl.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 BackControlMouseClicked(evt);
@@ -145,7 +148,7 @@ public class UsersModule extends javax.swing.JFrame {
     }//GEN-LAST:event_CloseControlMouseClicked
 
     private void BackControlMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BackControlMouseClicked
-        new Login().setVisible(true);
+        new MainAdmin().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_BackControlMouseClicked
 

@@ -139,11 +139,7 @@ public class FactoryModule extends javax.swing.JFrame {
     }//GEN-LAST:event_WarehouseOptionMouseClicked
 
     private void BackControlMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BackControlMouseClicked
-<<<<<<< HEAD
         new Login().setVisible(true);
-=======
-        new MainAdmin().setVisible(true);
->>>>>>> b744569fb9480f99472742fbb88a021fdef62361
         this.dispose();
     }//GEN-LAST:event_BackControlMouseClicked
 
@@ -154,7 +150,7 @@ public class FactoryModule extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {

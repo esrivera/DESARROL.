@@ -5,17 +5,57 @@
  */
 package View;
 
+import Model.Order;
+import Model.OrderDAO;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+
 /**
  *
  * @author Galito
  */
 public class AddOrderForm extends javax.swing.JFrame {
 
+    DateFormat dateFormat = DateFormat.getDateInstance();
+        
+    OrderDAO orderDao = new OrderDAO();
+    
     /**
      * Creates new form AddOrderForm
      */
     public AddOrderForm() {
         initComponents();
+    }
+    
+   
+    public void grabar(){
+        String nameOrder = "";
+        String fechaOrder = "";
+        String fechaEntregaOrder = "";
+        
+       
+        int  idOrder = 0;
+        int  idMoto = 0;
+        int cantidad = 0;
+        idOrder= Integer.parseInt(txtIdOrder.getText());
+        nameOrder= txtOrderName.getText();
+       
+        fechaOrder = dateFormat.format(jDateNowOrder.getDate());
+        fechaEntregaOrder= dateFormat.format(jDateDeliveryOrder.getDate());
+        idMoto= Integer.parseInt(txtMotoCode.getText());
+        cantidad= (Integer)jsCantidad.getValue();
+        Order order = new Order(idOrder,nameOrder,fechaOrder,fechaEntregaOrder,idMoto,cantidad);
+        orderDao.registerConcessioner(order);
+          
+    }
+    
+    public void limpiar(){
+        txtIdOrder.setText("");
+        txtOrderName.setText("");
+        txtMotoCode.setText("");
+        jDateNowOrder.setDate(null);
+        jDateDeliveryOrder.setDate(null);
+        jsCantidad.setValue(0);
     }
 
     /**
@@ -36,27 +76,20 @@ public class AddOrderForm extends javax.swing.JFrame {
         UnderlineTitleView = new javax.swing.JLabel();
         RegistryButton = new javax.swing.JLabel();
         CancelButton = new javax.swing.JLabel();
-        DollarIcon = new javax.swing.JLabel();
-        SortDownIcon = new javax.swing.JLabel();
-        SortUpIcon = new javax.swing.JLabel();
         Id = new javax.swing.JLabel();
         Name = new javax.swing.JLabel();
         Category = new javax.swing.JLabel();
         Description = new javax.swing.JLabel();
         Quantity = new javax.swing.JLabel();
         Price = new javax.swing.JLabel();
-        txtPieceName = new javax.swing.JTextField();
-        txtPieceCategory = new javax.swing.JTextField();
-        txtPieceDescription = new javax.swing.JTextField();
-        txtPieceQuantity = new javax.swing.JTextField();
-        txtPiecePrice = new javax.swing.JTextField();
-        txtPieceId = new javax.swing.JTextField();
+        txtIdOrder = new javax.swing.JTextField();
+        txtOrderName = new javax.swing.JTextField();
+        txtMotoCode = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        jDateNowOrder = new com.toedter.calendar.JDateChooser();
+        jsCantidad = new javax.swing.JSpinner();
+        jDateDeliveryOrder = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -120,6 +153,7 @@ public class AddOrderForm extends javax.swing.JFrame {
             }
         });
         jPnlBody.add(RegistryButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(228, 435, 140, 35));
+        RegistryButton.getAccessibleContext().setAccessibleDescription("");
 
         CancelButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Cancel Button.png"))); // NOI18N
         CancelButton.setAlignmentY(0.0F);
@@ -131,122 +165,70 @@ public class AddOrderForm extends javax.swing.JFrame {
         });
         jPnlBody.add(CancelButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(388, 435, 140, 35));
 
-        DollarIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Dollar Icon.png"))); // NOI18N
-        DollarIcon.setAlignmentY(0.0F);
-        jPnlBody.add(DollarIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(186, 368, 12, 21));
-
-        SortDownIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Sort Down.png"))); // NOI18N
-        SortDownIcon.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        SortDownIcon.setAlignmentY(0.0F);
-        jPnlBody.add(SortDownIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(367, 317, 13, 10));
-
-        SortUpIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Sort Up.png"))); // NOI18N
-        SortUpIcon.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        SortUpIcon.setAlignmentY(0.0F);
-        SortUpIcon.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jPnlBody.add(SortUpIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(367, 306, 13, 10));
-
         Id.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         Id.setForeground(new java.awt.Color(238, 112, 82));
-        Id.setText("Id:");
+        Id.setText("Date");
         Id.setAlignmentY(0.0F);
-        jPnlBody.add(Id, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 131, 18, 19));
+        jPnlBody.add(Id, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 130, 60, 19));
 
         Name.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         Name.setForeground(new java.awt.Color(238, 112, 82));
-        Name.setText("Name:");
+        Name.setText("Id Order");
         Name.setAlignmentY(0.0F);
-        jPnlBody.add(Name, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 131, 46, -1));
+        jPnlBody.add(Name, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 131, 60, -1));
 
         Category.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         Category.setForeground(new java.awt.Color(238, 112, 82));
-        Category.setText("Category:");
+        Category.setText("Oder´s Name:");
         Category.setAlignmentY(0.0F);
-        jPnlBody.add(Category, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 190, 68, 19));
+        jPnlBody.add(Category, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 190, 110, 19));
 
         Description.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         Description.setForeground(new java.awt.Color(238, 112, 82));
-        Description.setText("Description:");
+        Description.setText("Delivery Date");
         Description.setAlignmentY(0.0F);
-        jPnlBody.add(Description, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 246, 86, 19));
+        jPnlBody.add(Description, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 246, 100, 19));
 
         Quantity.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         Quantity.setForeground(new java.awt.Color(238, 112, 82));
-        Quantity.setText("Quantity:");
+        Quantity.setText("Motorcycle Code");
         Quantity.setAlignmentY(0.0F);
-        jPnlBody.add(Quantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 308, 64, 19));
+        jPnlBody.add(Quantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 308, 130, 19));
 
         Price.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         Price.setForeground(new java.awt.Color(238, 112, 82));
-        Price.setText("Price:");
+        Price.setText("Amount");
         Price.setAlignmentY(0.0F);
-        jPnlBody.add(Price, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 367, 41, 19));
+        jPnlBody.add(Price, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 367, 70, 19));
 
-        txtPieceName.setFont(new java.awt.Font("Roboto", 0, 20)); // NOI18N
-        txtPieceName.setForeground(new java.awt.Color(36, 47, 65));
-        txtPieceName.setAlignmentX(0.0F);
-        txtPieceName.setAlignmentY(0.0F);
-        txtPieceName.setBorder(null);
-        jPnlBody.add(txtPieceName, new org.netbeans.lib.awtextra.AbsoluteConstraints(186, 129, 194, 24));
+        txtIdOrder.setFont(new java.awt.Font("Roboto", 0, 20)); // NOI18N
+        txtIdOrder.setForeground(new java.awt.Color(36, 47, 65));
+        txtIdOrder.setAlignmentX(0.0F);
+        txtIdOrder.setAlignmentY(0.0F);
+        jPnlBody.add(txtIdOrder, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 130, 60, 24));
 
-        txtPieceCategory.setFont(new java.awt.Font("Roboto", 0, 20)); // NOI18N
-        txtPieceCategory.setForeground(new java.awt.Color(36, 47, 65));
-        txtPieceCategory.setAlignmentX(0.0F);
-        txtPieceCategory.setAlignmentY(0.0F);
-        txtPieceCategory.setBorder(null);
-        jPnlBody.add(txtPieceCategory, new org.netbeans.lib.awtextra.AbsoluteConstraints(186, 188, 194, 24));
+        txtOrderName.setFont(new java.awt.Font("Roboto", 0, 20)); // NOI18N
+        txtOrderName.setForeground(new java.awt.Color(36, 47, 65));
+        txtOrderName.setAlignmentX(0.0F);
+        txtOrderName.setAlignmentY(0.0F);
+        jPnlBody.add(txtOrderName, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 190, 194, 24));
 
-        txtPieceDescription.setFont(new java.awt.Font("Roboto", 0, 20)); // NOI18N
-        txtPieceDescription.setForeground(new java.awt.Color(36, 47, 65));
-        txtPieceDescription.setAlignmentX(0.0F);
-        txtPieceDescription.setAlignmentY(0.0F);
-        txtPieceDescription.setBorder(null);
-        jPnlBody.add(txtPieceDescription, new org.netbeans.lib.awtextra.AbsoluteConstraints(186, 244, 194, 24));
-
-        txtPieceQuantity.setFont(new java.awt.Font("Roboto", 0, 20)); // NOI18N
-        txtPieceQuantity.setForeground(new java.awt.Color(36, 47, 65));
-        txtPieceQuantity.setAlignmentX(0.0F);
-        txtPieceQuantity.setAlignmentY(0.0F);
-        txtPieceQuantity.setBorder(null);
-        jPnlBody.add(txtPieceQuantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(186, 306, 172, 24));
-
-        txtPiecePrice.setFont(new java.awt.Font("Roboto", 0, 20)); // NOI18N
-        txtPiecePrice.setForeground(new java.awt.Color(36, 47, 65));
-        txtPiecePrice.setAlignmentX(0.0F);
-        txtPiecePrice.setAlignmentY(0.0F);
-        txtPiecePrice.setBorder(null);
-        jPnlBody.add(txtPiecePrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(201, 365, 174, 24));
-
-        txtPieceId.setFont(new java.awt.Font("Roboto", 0, 20)); // NOI18N
-        txtPieceId.setForeground(new java.awt.Color(36, 47, 65));
-        txtPieceId.setAlignmentX(0.0F);
-        txtPieceId.setAlignmentY(0.0F);
-        txtPieceId.setBorder(null);
-        jPnlBody.add(txtPieceId, new org.netbeans.lib.awtextra.AbsoluteConstraints(438, 129, 194, 24));
+        txtMotoCode.setFont(new java.awt.Font("Roboto", 0, 20)); // NOI18N
+        txtMotoCode.setForeground(new java.awt.Color(36, 47, 65));
+        txtMotoCode.setAlignmentX(0.0F);
+        txtMotoCode.setAlignmentY(0.0F);
+        jPnlBody.add(txtMotoCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 310, 120, 20));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Piece Name Underline.png"))); // NOI18N
         jLabel1.setAlignmentY(0.0F);
-        jPnlBody.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(186, 153, 194, 1));
+        jPnlBody.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 150, 60, 10));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Piece Name Underline.png"))); // NOI18N
         jLabel2.setAlignmentY(0.0F);
-        jPnlBody.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(186, 213, 194, 1));
-
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Piece Name Underline.png"))); // NOI18N
-        jLabel3.setAlignmentY(0.0F);
-        jPnlBody.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(186, 270, 194, 1));
-
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Piece Name Underline.png"))); // NOI18N
-        jLabel4.setAlignmentY(0.0F);
-        jPnlBody.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(186, 330, 194, 1));
-
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Piece Name Underline.png"))); // NOI18N
-        jLabel5.setAlignmentY(0.0F);
-        jPnlBody.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(186, 390, 194, 1));
-
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Piece Name Underline.png"))); // NOI18N
-        jLabel6.setAlignmentY(0.0F);
-        jPnlBody.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(438, 153, 194, 1));
+        jPnlBody.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 210, 194, 10));
+        jPnlBody.add(jDateNowOrder, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 130, -1, -1));
+        jPnlBody.add(jsCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 360, -1, -1));
+        jPnlBody.add(jDateDeliveryOrder, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 240, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -301,8 +283,8 @@ public class AddOrderForm extends javax.swing.JFrame {
     }//GEN-LAST:event_BackControlMouseClicked
 
     private void RegistryButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RegistryButtonMouseClicked
-        if("".equals(txtPieceName.getText()) || "".equals(txtPieceCategory.getText()) || "".equals(txtPieceDescription.getText())
-            || "".equals(txtPieceQuantity.getText()) || "".equals(txtPiecePrice.getText()))
+        if("".equals(txtIdOrder.getText()) || "".equals(txtOrderName.getText()) || "".equals(txtMotoCode.getText())
+            || "".equals(jDateNowOrder.getDateFormatString()) || "".equals(jDateDeliveryOrder.getDateFormatString()))
         {
             OkDialog dialog = new OkDialog(this, true);
             dialog.dialogText.setText("All fields are required!");
@@ -310,23 +292,14 @@ public class AddOrderForm extends javax.swing.JFrame {
         }
         else
         {
-           /* pieceDAO.registerPiece(txtPieceName.getText(), txtPieceCategory.getText(), txtPieceDescription.getText(),
-                Integer.parseInt(txtPieceQuantity.getText()), Float.parseFloat(txtPiecePrice.getText()));
-            txtPieceName.setText("");
-            txtPieceCategory.setText("");
-            txtPieceDescription.setText("");
-            txtPieceQuantity.setText("");
-            txtPiecePrice.setText("");*/
+            grabar();
+            //limpiar();
         }
 
     }//GEN-LAST:event_RegistryButtonMouseClicked
 
     private void CancelButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CancelButtonMouseClicked
-        txtPieceName.setText("");
-        txtPieceCategory.setText("");
-        txtPieceDescription.setText("");
-        txtPieceQuantity.setText("");
-        txtPiecePrice.setText("");
+        limpiar();
     }//GEN-LAST:event_CancelButtonMouseClicked
 
     /**
@@ -371,29 +344,22 @@ public class AddOrderForm extends javax.swing.JFrame {
     private javax.swing.JLabel Category;
     private javax.swing.JLabel CloseControl;
     private javax.swing.JLabel Description;
-    private javax.swing.JLabel DollarIcon;
     private javax.swing.JLabel Id;
     private javax.swing.JLabel MinimiceControl;
     private javax.swing.JLabel Name;
     private javax.swing.JLabel Price;
     private javax.swing.JLabel Quantity;
     private javax.swing.JLabel RegistryButton;
-    private javax.swing.JLabel SortDownIcon;
-    private javax.swing.JLabel SortUpIcon;
     private javax.swing.JLabel UnderlineTitleView;
+    private com.toedter.calendar.JDateChooser jDateDeliveryOrder;
+    private com.toedter.calendar.JDateChooser jDateNowOrder;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPnlBody;
     private javax.swing.JPanel jPnlWindowControls;
-    private javax.swing.JTextField txtPieceCategory;
-    private javax.swing.JTextField txtPieceDescription;
-    private javax.swing.JTextField txtPieceId;
-    private javax.swing.JTextField txtPieceName;
-    private javax.swing.JTextField txtPiecePrice;
-    private javax.swing.JTextField txtPieceQuantity;
+    private javax.swing.JSpinner jsCantidad;
+    private javax.swing.JTextField txtIdOrder;
+    private javax.swing.JTextField txtMotoCode;
+    private javax.swing.JTextField txtOrderName;
     // End of variables declaration//GEN-END:variables
 }

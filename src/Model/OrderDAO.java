@@ -18,6 +18,10 @@ import java.sql.SQLException;
 public class OrderDAO {
     Link connection;
 
+    public OrderDAO() {
+    }
+
+    
     public OrderDAO(Link connection) {
        connection = new Link();
     }
@@ -27,8 +31,8 @@ public class OrderDAO {
         Connection link = connection.getConnection();
         try
         {
-            PreparedStatement statement = link.prepareStatement("INSERT INTO order(idOrder, NameOder,fechaActual,"
-                    + "fechaEntrega, idMoto, cantidad)) VALUES(?, ?, ?, ?, ?, ? )");
+            PreparedStatement statement = link.prepareStatement("INSERT INTO orders(idOrder,NameOrder,fechaActual,"
+                    + "fechaEntrega,idMoto,cantidad) VALUES(?,?,?,?,?,?)");
            
             statement.setInt(1, order.getIdOrder());
             statement.setString(2, order.getNameOder());

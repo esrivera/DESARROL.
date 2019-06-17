@@ -106,6 +106,11 @@ public class MainAdmin extends javax.swing.JFrame {
         OrdersOption.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Orders.png"))); // NOI18N
         OrdersOption.setAlignmentY(0.0F);
         OrdersOption.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        OrdersOption.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                OrdersOptionMouseClicked(evt);
+            }
+        });
         jPnlBody.add(OrdersOption, new org.netbeans.lib.awtextra.AbsoluteConstraints(68, 76, 122, 181));
 
         ConcessionerOption.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Concessioner.png"))); // NOI18N
@@ -172,6 +177,12 @@ public class MainAdmin extends javax.swing.JFrame {
         new UsersModule().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_UsersOptionMouseClicked
+
+    private void OrdersOptionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_OrdersOptionMouseClicked
+        // TODO add your handling code here:
+        new OrderModule().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_OrdersOptionMouseClicked
 
     /**
      * @param args the command line arguments

@@ -165,10 +165,10 @@
                   <Table columnCount="6" rowCount="14">
                     <Column editable="true" title="IdOrder" type="java.lang.Object"/>
                     <Column editable="true" title="NameOrder" type="java.lang.Object"/>
-                    <Column editable="true" title="FechaActual" type="java.lang.Object"/>
-                    <Column editable="true" title="FechaEntrega" type="java.lang.Object"/>
+                    <Column editable="true" title="CurrentDate" type="java.lang.Object"/>
+                    <Column editable="true" title="DeliveryDate" type="java.lang.Object"/>
                     <Column editable="true" title="IdMoto" type="java.lang.Object"/>
-                    <Column editable="true" title="Cantidad" type="java.lang.Object"/>
+                    <Column editable="true" title="Quantity" type="java.lang.Object"/>
                   </Table>
                 </Property>
                 <Property name="alignmentX" type="float" value="0.0"/>
@@ -261,12 +261,12 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JButton" name="btnCargar">
+        <Component class="javax.swing.JButton" name="btnCharge">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Cargar"/>
+            <Property name="text" type="java.lang.String" value="Charge"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCargarActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnChargeActionPerformed"/>
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">

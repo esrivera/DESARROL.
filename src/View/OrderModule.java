@@ -89,7 +89,7 @@ public class OrderModule extends javax.swing.JFrame {
         });
         jPnlBody.add(BackControl, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 20, 32));
 
-        btnOrderAdd.setText("Agregar orden");
+        btnOrderAdd.setText("Add Order");
         btnOrderAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnOrderAddActionPerformed(evt);
@@ -97,7 +97,7 @@ public class OrderModule extends javax.swing.JFrame {
         });
         jPnlBody.add(btnOrderAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 170, -1, -1));
 
-        btnEditOrder.setText("Editar Orden");
+        btnEditOrder.setText("Modify Order");
         btnEditOrder.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEditOrderActionPerformed(evt);
@@ -105,7 +105,7 @@ public class OrderModule extends javax.swing.JFrame {
         });
         jPnlBody.add(btnEditOrder, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 150, -1, -1));
 
-        bntViewOrder.setText("Consultar Orden");
+        bntViewOrder.setText("View Order");
         bntViewOrder.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bntViewOrderActionPerformed(evt);
@@ -113,7 +113,7 @@ public class OrderModule extends javax.swing.JFrame {
         });
         jPnlBody.add(bntViewOrder, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 360, -1, -1));
 
-        btnDeleteOrder.setText("Eliminar orden");
+        btnDeleteOrder.setText("Delete Order");
         btnDeleteOrder.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDeleteOrderActionPerformed(evt);

@@ -162,7 +162,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnOrderAdd">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Agregar orden"/>
+            <Property name="text" type="java.lang.String" value="Add Order"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnOrderAddActionPerformed"/>
@@ -175,7 +175,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnEditOrder">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Editar Orden"/>
+            <Property name="text" type="java.lang.String" value="Modify Order"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEditOrderActionPerformed"/>
@@ -188,7 +188,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="bntViewOrder">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Consultar Orden"/>
+            <Property name="text" type="java.lang.String" value="View Order"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bntViewOrderActionPerformed"/>
@@ -201,7 +201,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnDeleteOrder">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Eliminar orden"/>
+            <Property name="text" type="java.lang.String" value="Delete Order"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDeleteOrderActionPerformed"/>

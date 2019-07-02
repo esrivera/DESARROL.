@@ -29,28 +29,28 @@ public class AddOrderForm extends javax.swing.JFrame {
     }
     
    
-    public void grabar(){
+    public void save(){
         String nameOrder = "";
-        String fechaOrder = "";
-        String fechaEntregaOrder = "";
+        String currentDateOrder = "";
+        String deliveryDateOrder = "";
         
        
         int  idOrder = 0;
         int  idMoto = 0;
-        int cantidad = 0;
+        int  quantity = 0;
         idOrder= Integer.parseInt(txtIdOrder.getText());
         nameOrder= txtOrderName.getText();
        
-        fechaOrder = dateFormat.format(jDateNowOrder.getDate());
-        fechaEntregaOrder= dateFormat.format(jDateDeliveryOrder.getDate());
+        currentDateOrder = dateFormat.format(jDateNowOrder.getDate());
+        deliveryDateOrder= dateFormat.format(jDateDeliveryOrder.getDate());
         idMoto= Integer.parseInt(txtMotoCode.getText());
-        cantidad= (Integer)jsCantidad.getValue();
-        Order order = new Order(idOrder,nameOrder,fechaOrder,fechaEntregaOrder,idMoto,cantidad);
+        quantity= (Integer)jsCantidad.getValue();
+        Order order = new Order(idOrder,nameOrder,currentDateOrder,deliveryDateOrder,idMoto,quantity);
         orderDao.registerConcessioner(order);
           
     }
     
-    public void limpiar(){
+    public void clear(){
         txtIdOrder.setText("");
         txtOrderName.setText("");
         txtMotoCode.setText("");
@@ -293,14 +293,14 @@ public class AddOrderForm extends javax.swing.JFrame {
         }
         else
         {
-            grabar();
+            save();
             //limpiar();
         }
 
     }//GEN-LAST:event_RegistryButtonMouseClicked
 
     private void CancelButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CancelButtonMouseClicked
-        limpiar();
+        clear();
     }//GEN-LAST:event_CancelButtonMouseClicked
 
     /**

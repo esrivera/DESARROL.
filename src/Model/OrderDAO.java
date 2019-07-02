@@ -36,15 +36,15 @@ public class OrderDAO {
     public void registerConcessioner(Order order) {
         Connection link = connection.getConnection();
         try {
-            PreparedStatement statement = link.prepareStatement("INSERT INTO orders(idOrder,NameOrder,fechaActual,"
-                    + "fechaEntrega,idMoto,cantidad) VALUES(?,?,?,?,?,?)");
+            PreparedStatement statement = link.prepareStatement("INSERT INTO orders(idOrder,NameOrder,currentDate,"
+                    + "deliveryDate,idMoto,quantity) VALUES(?,?,?,?,?,?)");
 
             statement.setInt(1, order.getIdOrder());
             statement.setString(2, order.getNameOder());
-            statement.setString(3, order.getFechaActual());
-            statement.setString(4, order.getFechaEntrega());
+            statement.setString(3, order.getCurrentDate());
+            statement.setString(4, order.getDeliveryDate());
             statement.setInt(5, order.getIdMoto());
-            statement.setInt(6, order.getCantidad());
+            statement.setInt(6, order.getQuantity());
 
             statement.executeUpdate();
             OkDialog dialog = new OkDialog(new AddOrderForm(), true);
@@ -61,9 +61,9 @@ public class OrderDAO {
     public void modifyOrder(Order order) {
         try {
             Connection link = connection.getConnection();
-            PreparedStatement ps = link.prepareStatement("UPDATE orders SET NameOrder='" + order.getNameOder()+ "',fechaActual='" + order.getFechaActual()
-                    + "',fechaEntrega='" + order.getFechaEntrega() + "',idMoto='" + order.getIdMoto() + "',cantidad='"
-                    + order.getCantidad() + "' WHERE idOrder='" + order.getIdOrder() + "'");
+            PreparedStatement ps = link.prepareStatement("UPDATE orders SET NameOrder='" + order.getNameOder()+ "',currentDate='" + order.getCurrentDate()
+                    + "',deliveryDate='" + order.getDeliveryDate() + "',idMoto='" + order.getIdMoto() + "',quantity='"
+                    + order.getQuantity() + "' WHERE idOrder='" + order.getIdOrder() + "'");
             ps.executeUpdate();
             OkDialog dialog = new OkDialog(new ModifyOrderForm(), true);
             dialog.dialogText.setText("The data has been updated successfully");
@@ -109,10 +109,10 @@ public class OrderDAO {
                 order = new Order();
                 order.setIdOrder(rs.getInt(1));
                 order.setNameOder(rs.getString(2));
-                order.setFechaActual(rs.getString(3));
-                order.setFechaEntrega(rs.getString(4));
+                order.setCurrentDate(rs.getString(3));
+                order.setDeliveryDate(rs.getString(4));
                 order.setIdMoto(rs.getInt(5));
-                order.setCantidad(rs.getInt(6));
+                order.setQuantity(rs.getInt(6));
 
                 arr.add(order);
             }

@@ -165,10 +165,10 @@
                   <Table columnCount="6" rowCount="14">
                     <Column editable="true" title="IdOrder" type="java.lang.Object"/>
                     <Column editable="true" title="NameOrder" type="java.lang.Object"/>
-                    <Column editable="true" title="FechaActual" type="java.lang.Object"/>
-                    <Column editable="true" title="FechaEntrega" type="java.lang.Object"/>
+                    <Column editable="true" title="CurrentDate" type="java.lang.Object"/>
+                    <Column editable="true" title="DeliveryDate" type="java.lang.Object"/>
                     <Column editable="true" title="IdMoto" type="java.lang.Object"/>
-                    <Column editable="true" title="Cantidad" type="java.lang.Object"/>
+                    <Column editable="true" title="Quantity" type="java.lang.Object"/>
                   </Table>
                 </Property>
                 <Property name="alignmentX" type="float" value="0.0"/>
@@ -266,7 +266,7 @@
         </Container>
         <Component class="javax.swing.JButton" name="btnCargar">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Refrescar"/>
+            <Property name="text" type="java.lang.String" value="Refresh"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCargarActionPerformed"/>
@@ -463,12 +463,12 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout"/>
         </Container>
-        <Component class="javax.swing.JButton" name="btnActualizar">
+        <Component class="javax.swing.JButton" name="btnUpdate">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Actualizar"/>
+            <Property name="text" type="java.lang.String" value="Update"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnActualizarActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnUpdateActionPerformed"/>
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">

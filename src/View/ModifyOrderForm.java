@@ -27,7 +27,7 @@ public class ModifyOrderForm extends javax.swing.JFrame {
     //ConcessionerVO concessionerVO;
     OrderDAO orderDao = new OrderDAO();
     Order order;
-    int fila;
+    //int fila;
     
     SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MMM-yyyy");
 
@@ -72,7 +72,7 @@ public class ModifyOrderForm extends javax.swing.JFrame {
         Price = new javax.swing.JLabel();
         jsCantidad = new javax.swing.JSpinner();
         jPanel1 = new javax.swing.JPanel();
-        btnActualizar = new javax.swing.JButton();
+        btnUpdate = new javax.swing.JButton();
         jPnlBanner = new javax.swing.JPanel();
         BackgroundBanner = new javax.swing.JLabel();
 
@@ -147,7 +147,7 @@ public class ModifyOrderForm extends javax.swing.JFrame {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "IdOrder", "NameOrder", "FechaActual", "FechaEntrega", "IdMoto", "Cantidad"
+                "IdOrder", "NameOrder", "CurrentDate", "DeliveryDate", "IdMoto", "Quantity"
             }
         ));
         tblOrders.setAlignmentX(0.0F);
@@ -181,7 +181,7 @@ public class ModifyOrderForm extends javax.swing.JFrame {
 
         jPnlBody.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 430, 300));
 
-        btnCargar.setText("Refrescar");
+        btnCargar.setText("Refresh");
         btnCargar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCargarActionPerformed(evt);
@@ -252,13 +252,13 @@ public class ModifyOrderForm extends javax.swing.JFrame {
         jPnlBody.add(jsCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 410, -1, -1));
         jPnlBody.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 30, -1, -1));
 
-        btnActualizar.setText("Actualizar");
-        btnActualizar.addActionListener(new java.awt.event.ActionListener() {
+        btnUpdate.setText("Update");
+        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnActualizarActionPerformed(evt);
+                btnUpdateActionPerformed(evt);
             }
         });
-        jPnlBody.add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 460, -1, -1));
+        jPnlBody.add(btnUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 460, -1, -1));
 
         getContentPane().add(jPnlBody, new org.netbeans.lib.awtextra.AbsoluteConstraints(295, 45, 880, 530));
 
@@ -312,17 +312,17 @@ public class ModifyOrderForm extends javax.swing.JFrame {
             txtIdOrder.setText(tblOrders.getValueAt(select, 0).toString());
             txtOrderName.setText(tblOrders.getValueAt(select, 1).toString());
             
-            Date fechanow;
+            Date dateNow;
             try {
-                fechanow= dateFormat.parse(tblOrders.getValueAt(select, 2).toString());
-                jDateNowOrder.setDate(fechanow);
+                dateNow= dateFormat.parse(tblOrders.getValueAt(select, 2).toString());
+                jDateNowOrder.setDate(dateNow);
             } catch (ParseException ex) {
                 Logger.getLogger(ModifyOrderForm.class.getName()).log(Level.SEVERE, null, ex);
             }
             
             try {
-                fechanow= dateFormat.parse(tblOrders.getValueAt(select, 3).toString());
-                jDateDeliveryOrder.setDate(fechanow);
+                dateNow= dateFormat.parse(tblOrders.getValueAt(select, 3).toString());
+                jDateDeliveryOrder.setDate(dateNow);
             } catch (ParseException ex) {
                 Logger.getLogger(ModifyOrderForm.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -330,15 +330,15 @@ public class ModifyOrderForm extends javax.swing.JFrame {
             txtMotoCode.setText(tblOrders.getValueAt(select, 4).toString());
             jsCantidad.setValue(tblOrders.getValueAt(select, 5));
 
-            fila = select;
+            //fila = select;
         }else{
-            JOptionPane.showMessageDialog(null,"no selecciono fila");
+            JOptionPane.showMessageDialog(null,"you don't have a selected row");
         }
 
 
     }//GEN-LAST:event_tblOrdersMouseClicked
 
-    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
+    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // TODO add your handling code here:
         
         if("".equals(txtIdOrder.getText()) || "".equals(txtOrderName.getText()) || "".equals(txtMotoCode.getText())
@@ -350,15 +350,15 @@ public class ModifyOrderForm extends javax.swing.JFrame {
         }
         else
         {
-            actualizar();
+            update();
             //limpiar();
         }
-    }//GEN-LAST:event_btnActualizarActionPerformed
+    }//GEN-LAST:event_btnUpdateActionPerformed
 
-    public void actualizar(){
+    public void update(){
         String nameOrder = "";
-        String fechaOrder = "";
-        String fechaEntregaOrder = "";
+        String currentDateOrder = "";
+        String deliveryDateOrder = "";
         
         int  idOrder = 0;
         int  idMoto = 0;
@@ -366,11 +366,11 @@ public class ModifyOrderForm extends javax.swing.JFrame {
         idOrder= Integer.parseInt(txtIdOrder.getText());
         nameOrder= txtOrderName.getText();
        
-        fechaOrder = dateFormat.format(jDateNowOrder.getDate());
-        fechaEntregaOrder= dateFormat.format(jDateDeliveryOrder.getDate());
+        currentDateOrder = dateFormat.format(jDateNowOrder.getDate());
+        deliveryDateOrder= dateFormat.format(jDateDeliveryOrder.getDate());
         idMoto= Integer.parseInt(txtMotoCode.getText());
         cantidad= (Integer)jsCantidad.getValue();
-        Order order = new Order(idOrder,nameOrder,fechaOrder,fechaEntregaOrder,idMoto,cantidad);
+        Order order = new Order(idOrder,nameOrder,currentDateOrder,deliveryDateOrder,idMoto,cantidad);
         orderDao.modifyOrder(order);
           
     }
@@ -382,20 +382,20 @@ public class ModifyOrderForm extends javax.swing.JFrame {
 
         model.addColumn("IdOrder");
         model.addColumn("NameOrder");
-        model.addColumn("FechaActual");
-        model.addColumn("FechaEntrega");
+        model.addColumn("CurrentDate");
+        model.addColumn("DeliveryDate");
         model.addColumn("IdMoto");
-        model.addColumn("Cantidad");
+        model.addColumn("Quantity");
         tblOrders.setModel(model);
 
         Object[] column = new Object[6];
         for (int i = 0; i < array.size(); i++) {
             column[0] = array.get(i).getIdOrder();
             column[1] = array.get(i).getNameOder();
-            column[2] = array.get(i).getFechaActual();
-            column[3] = array.get(i).getFechaEntrega();
+            column[2] = array.get(i).getCurrentDate();
+            column[3] = array.get(i).getDeliveryDate();
             column[4] = array.get(i).getIdMoto();
-            column[5] = array.get(i).getCantidad();
+            column[5] = array.get(i).getQuantity();
 
             model.addRow(column);
 
@@ -452,8 +452,8 @@ public class ModifyOrderForm extends javax.swing.JFrame {
     private javax.swing.JLabel Price;
     private javax.swing.JLabel Quantity;
     private javax.swing.JLabel UnderlineTitleView;
-    private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnCargar;
+    private javax.swing.JButton btnUpdate;
     private com.toedter.calendar.JDateChooser jDateDeliveryOrder;
     private com.toedter.calendar.JDateChooser jDateNowOrder;
     private javax.swing.JPanel jPanel1;

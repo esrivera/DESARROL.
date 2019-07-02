@@ -142,7 +142,7 @@ public class DeleteOrderForm extends javax.swing.JFrame {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "IdOrder", "NameOrder", "FechaActual", "FechaEntrega", "IdMoto", "Cantidad"
+                "IdOrder", "NameOrder", "CurrentDate", "DeliveryDate", "IdMoto", "Quantity"
             }
         ));
         tblOrders.setAlignmentX(0.0F);
@@ -236,20 +236,20 @@ public class DeleteOrderForm extends javax.swing.JFrame {
         
         model.addColumn("IdOrder");
         model.addColumn("NameOrder");
-        model.addColumn("FechaActual");
-        model.addColumn("FechaEntrega");
+        model.addColumn("CurrentDate");
+        model.addColumn("DeliveryDate");
         model.addColumn("IdMoto");
-        model.addColumn("Cantidad");
+        model.addColumn("Quantity");
         tblOrders.setModel(model);
         
         Object[] column=new Object[6];
         for(int i=0; i<array.size(); i++){
             column[0]=array.get(i).getIdOrder();
             column[1]=array.get(i).getNameOder();
-            column[2]=array.get(i).getFechaActual();
-            column[3]=array.get(i).getFechaEntrega();
+            column[2]=array.get(i).getCurrentDate();
+            column[3]=array.get(i).getDeliveryDate();
             column[4]=array.get(i).getIdMoto();
-            column[5]=array.get(i).getCantidad();
+            column[5]=array.get(i).getQuantity();
 
             model.addRow(column);
             

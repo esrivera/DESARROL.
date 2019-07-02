@@ -12,22 +12,22 @@ package Model;
 public class Order {
 
     private int idOrder;
-    private String NameOrder;
-    private String fechaActual;
-    private String fechaEntrega;
+    private String nameOrder;
+    private String currentDate;
+    private String deliveryDate;
     private int idMoto;
-    private int cantidad;
+    private int quantity;
 
     public Order() {
     }
 
     public Order(int idOrder, String NameOder, String fechaActual, String fechaEntrega, int idMoto, int cantidad) {
         this.idOrder = idOrder;
-        this.NameOrder = NameOder;
-        this.fechaActual = fechaActual;
-        this.fechaEntrega = fechaEntrega;
+        this.nameOrder = NameOder;
+        this.currentDate = fechaActual;
+        this.deliveryDate = fechaEntrega;
         this.idMoto = idMoto;
-        this.cantidad = cantidad;
+        this.quantity = cantidad;
     }
 
     
@@ -42,27 +42,27 @@ public class Order {
     }
 
     public String getNameOder() {
-        return NameOrder;
+        return nameOrder;
     }
 
     public void setNameOder(String NameOder) {
-        this.NameOrder = NameOder;
+        this.nameOrder = NameOder;
     }
 
-    public String getFechaActual() {
-        return fechaActual;
+    public String getCurrentDate() {
+        return currentDate;
     }
 
-    public void setFechaActual(String fechaActual) {
-        this.fechaActual = fechaActual;
+    public void setCurrentDate(String currentDate) {
+        this.currentDate = currentDate;
     }
 
-    public String getFechaEntrega() {
-        return fechaEntrega;
+    public String getDeliveryDate() {
+        return deliveryDate;
     }
 
-    public void setFechaEntrega(String fechaEntrega) {
-        this.fechaEntrega = fechaEntrega;
+    public void setDeliveryDate(String deliveryDate) {
+        this.deliveryDate = deliveryDate;
     }
 
     public int getIdMoto() {
@@ -73,12 +73,12 @@ public class Order {
         this.idMoto = idMoto;
     }
 
-    public int getCantidad() {
-        return cantidad;
+    public int getQuantity() {
+        return quantity;
     }
 
-    public void setCantidad(int cantidad) {
-        this.cantidad = cantidad;
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
     
     

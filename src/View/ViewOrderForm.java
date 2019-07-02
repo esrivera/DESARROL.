@@ -51,7 +51,7 @@ public class ViewOrderForm extends javax.swing.JFrame {
         UnderlineTitleView = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblOrders = new rojerusan.RSTableMetro();
-        btnCargar = new javax.swing.JButton();
+        btnCharge = new javax.swing.JButton();
         jPnlBanner = new javax.swing.JPanel();
         BackgroundBanner = new javax.swing.JLabel();
 
@@ -126,7 +126,7 @@ public class ViewOrderForm extends javax.swing.JFrame {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "IdOrder", "NameOrder", "FechaActual", "FechaEntrega", "IdMoto", "Cantidad"
+                "IdOrder", "NameOrder", "CurrentDate", "DeliveryDate", "IdMoto", "Quantity"
             }
         ));
         tblOrders.setAlignmentX(0.0F);
@@ -155,13 +155,13 @@ public class ViewOrderForm extends javax.swing.JFrame {
 
         jPnlBody.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 710, 358));
 
-        btnCargar.setText("Cargar");
-        btnCargar.addActionListener(new java.awt.event.ActionListener() {
+        btnCharge.setText("Charge");
+        btnCharge.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCargarActionPerformed(evt);
+                btnChargeActionPerformed(evt);
             }
         });
-        jPnlBody.add(btnCargar, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 80, -1, -1));
+        jPnlBody.add(btnCharge, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 80, -1, -1));
 
         getContentPane().add(jPnlBody, new org.netbeans.lib.awtextra.AbsoluteConstraints(295, 45, 755, 530));
 
@@ -200,10 +200,10 @@ public class ViewOrderForm extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_BackControlMouseClicked
 
-    private void btnCargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargarActionPerformed
+    private void btnChargeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChargeActionPerformed
         // TODO add your handling code here:
         RefreshTable();
-    }//GEN-LAST:event_btnCargarActionPerformed
+    }//GEN-LAST:event_btnChargeActionPerformed
     
     private void RefreshTable()
     {
@@ -214,20 +214,20 @@ public class ViewOrderForm extends javax.swing.JFrame {
         
         model.addColumn("IdOrder");
         model.addColumn("NameOrder");
-        model.addColumn("FechaActual");
-        model.addColumn("FechaEntrega");
+        model.addColumn("CurrentDate");
+        model.addColumn("DeliveryDate");
         model.addColumn("IdMoto");
-        model.addColumn("Cantidad");
+        model.addColumn("Quantity");
         tblOrders.setModel(model);
         
         Object[] column=new Object[6];
         for(int i=0; i<array.size(); i++){
             column[0]=array.get(i).getIdOrder();
             column[1]=array.get(i).getNameOder();
-            column[2]=array.get(i).getFechaActual();
-            column[3]=array.get(i).getFechaEntrega();
+            column[2]=array.get(i).getCurrentDate();
+            column[3]=array.get(i).getDeliveryDate();
             column[4]=array.get(i).getIdMoto();
-            column[5]=array.get(i).getCantidad();
+            column[5]=array.get(i).getQuantity();
 
             model.addRow(column);
             
@@ -277,7 +277,7 @@ public class ViewOrderForm extends javax.swing.JFrame {
     private javax.swing.JLabel CloseControl;
     private javax.swing.JLabel MinimiceControl;
     private javax.swing.JLabel UnderlineTitleView;
-    private javax.swing.JButton btnCargar;
+    private javax.swing.JButton btnCharge;
     private javax.swing.JPanel jPnlBanner;
     private javax.swing.JPanel jPnlBody;
     private javax.swing.JPanel jPnlWindowControls;

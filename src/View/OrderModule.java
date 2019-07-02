@@ -16,6 +16,7 @@ public class OrderModule extends javax.swing.JFrame {
      */
     public OrderModule() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -33,12 +34,13 @@ public class OrderModule extends javax.swing.JFrame {
         CloseControl = new javax.swing.JLabel();
         jPnlBody = new javax.swing.JPanel();
         BackControl = new javax.swing.JLabel();
-        OrderAdd = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        btnOrderAdd = new javax.swing.JButton();
+        btnEditOrder = new javax.swing.JButton();
+        bntViewOrder = new javax.swing.JButton();
+        btnDeleteOrder = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         BackgroundBanner.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         BackgroundBanner.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Banner1.png"))); // NOI18N
@@ -59,7 +61,7 @@ public class OrderModule extends javax.swing.JFrame {
                 MinimiceControlMouseClicked(evt);
             }
         });
-        jPnlWindowControls.add(MinimiceControl, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 10, -1, 27));
+        jPnlWindowControls.add(MinimiceControl, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 10, -1, 27));
 
         CloseControl.setFont(new java.awt.Font("Font Awesome 5 Free Regular", 0, 20)); // NOI18N
         CloseControl.setForeground(new java.awt.Color(153, 153, 153));
@@ -72,7 +74,7 @@ public class OrderModule extends javax.swing.JFrame {
                 CloseControlMouseClicked(evt);
             }
         });
-        jPnlWindowControls.add(CloseControl, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 10, -1, 27));
+        jPnlWindowControls.add(CloseControl, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 10, -1, 27));
 
         jPnlBody.setBackground(new java.awt.Color(255, 255, 255));
         jPnlBody.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -87,22 +89,37 @@ public class OrderModule extends javax.swing.JFrame {
         });
         jPnlBody.add(BackControl, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 20, 32));
 
-        OrderAdd.setText("Agregar orden");
-        OrderAdd.addActionListener(new java.awt.event.ActionListener() {
+        btnOrderAdd.setText("Agregar orden");
+        btnOrderAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                OrderAddActionPerformed(evt);
+                btnOrderAddActionPerformed(evt);
             }
         });
-        jPnlBody.add(OrderAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 170, -1, -1));
+        jPnlBody.add(btnOrderAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 170, -1, -1));
 
-        jButton2.setText("Editar Orden");
-        jPnlBody.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 150, -1, -1));
+        btnEditOrder.setText("Editar Orden");
+        btnEditOrder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditOrderActionPerformed(evt);
+            }
+        });
+        jPnlBody.add(btnEditOrder, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 150, -1, -1));
 
-        jButton3.setText("Consultar Orden");
-        jPnlBody.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 360, -1, -1));
+        bntViewOrder.setText("Consultar Orden");
+        bntViewOrder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bntViewOrderActionPerformed(evt);
+            }
+        });
+        jPnlBody.add(bntViewOrder, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 360, -1, -1));
 
-        jButton4.setText("Eliminar orden");
-        jPnlBody.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 350, -1, -1));
+        btnDeleteOrder.setText("Eliminar orden");
+        btnDeleteOrder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteOrderActionPerformed(evt);
+            }
+        });
+        jPnlBody.add(btnDeleteOrder, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 350, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -111,26 +128,20 @@ public class OrderModule extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(BackgroundBanner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPnlBody, javax.swing.GroupLayout.PREFERRED_SIZE, 807, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(181, Short.MAX_VALUE)
-                    .addComponent(jPnlWindowControls, javax.swing.GroupLayout.PREFERRED_SIZE, 926, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap()))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPnlBody, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPnlWindowControls, javax.swing.GroupLayout.DEFAULT_SIZE, 860, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(BackgroundBanner, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 575, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPnlBody, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 525, javax.swing.GroupLayout.PREFERRED_SIZE)))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPnlWindowControls, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(519, Short.MAX_VALUE)))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(BackgroundBanner, javax.swing.GroupLayout.PREFERRED_SIZE, 575, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPnlWindowControls, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPnlBody, javax.swing.GroupLayout.PREFERRED_SIZE, 525, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
 
         pack();
@@ -142,7 +153,7 @@ public class OrderModule extends javax.swing.JFrame {
 
     private void CloseControlMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CloseControlMouseClicked
         ConfirmDialog dialog = new ConfirmDialog(this, true);
-        dialog.dialogText.setText("Do you want to logout?");
+        dialog.dialogText.setText("Do you want to exit?");
         dialog.setVisible(true);
         if(dialog.getReturnStatus()==1)
         {
@@ -156,11 +167,29 @@ public class OrderModule extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_BackControlMouseClicked
 
-    private void OrderAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OrderAddActionPerformed
+    private void btnOrderAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrderAddActionPerformed
         // TODO add your handling code here:
         new AddOrderForm().setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_OrderAddActionPerformed
+    }//GEN-LAST:event_btnOrderAddActionPerformed
+
+    private void bntViewOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntViewOrderActionPerformed
+        // TODO add your handling code here
+        new ViewOrderForm().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_bntViewOrderActionPerformed
+
+    private void btnDeleteOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteOrderActionPerformed
+        // TODO add your handling code here:
+        new DeleteOrderForm().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnDeleteOrderActionPerformed
+
+    private void btnEditOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditOrderActionPerformed
+        // TODO add your handling code here:
+        new ModifyOrderForm().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnEditOrderActionPerformed
 
     /**
      * @param args the command line arguments
@@ -202,10 +231,10 @@ public class OrderModule extends javax.swing.JFrame {
     private javax.swing.JLabel BackgroundBanner;
     private javax.swing.JLabel CloseControl;
     private javax.swing.JLabel MinimiceControl;
-    private javax.swing.JButton OrderAdd;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton bntViewOrder;
+    private javax.swing.JButton btnDeleteOrder;
+    private javax.swing.JButton btnEditOrder;
+    private javax.swing.JButton btnOrderAdd;
     private javax.swing.JPanel jPnlBody;
     private javax.swing.JPanel jPnlWindowControls;
     // End of variables declaration//GEN-END:variables

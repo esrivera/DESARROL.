@@ -12,7 +12,7 @@ package Model;
 public class Order {
 
     private int idOrder;
-    private String NameOder;
+    private String NameOrder;
     private String fechaActual;
     private String fechaEntrega;
     private int idMoto;
@@ -23,7 +23,7 @@ public class Order {
 
     public Order(int idOrder, String NameOder, String fechaActual, String fechaEntrega, int idMoto, int cantidad) {
         this.idOrder = idOrder;
-        this.NameOder = NameOder;
+        this.NameOrder = NameOder;
         this.fechaActual = fechaActual;
         this.fechaEntrega = fechaEntrega;
         this.idMoto = idMoto;
@@ -42,11 +42,11 @@ public class Order {
     }
 
     public String getNameOder() {
-        return NameOder;
+        return NameOrder;
     }
 
     public void setNameOder(String NameOder) {
-        this.NameOder = NameOder;
+        this.NameOrder = NameOder;
     }
 
     public String getFechaActual() {

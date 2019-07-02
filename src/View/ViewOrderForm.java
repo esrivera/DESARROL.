@@ -5,27 +5,33 @@
  */
 package View;
 
-import Model.PieceDAO;
-import Model.TextPrompt;
+import Model.ConcessionerDAO;
+import Model.ConcessionerVO;
+import Model.Order;
+import Model.OrderDAO;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author Randy
  */
-public class ViewPiecesForm extends javax.swing.JFrame {
-    PieceDAO pieceDAO = new PieceDAO();
-    String idPiece="";
+public class ViewOrderForm extends javax.swing.JFrame {
+
+    ConcessionerDAO concessionerDAO = new ConcessionerDAO();
+    //ConcessionerVO concessionerVO;
+    OrderDAO orderDao = new OrderDAO();
+    Order order;
+    
     
     /**
-     * Creates new form ViewPiecesForm
+     * Creates new form ViewConcessionerForm
      */
-    public ViewPiecesForm() {
+    public ViewOrderForm() {
+        
         initComponents();
         this.setLocationRelativeTo(null);
-        
-        TextPrompt searchHint = new TextPrompt("Search", txtSearch);
-        
-        pieceDAO.viewPiece(tblPieces);
+        RefreshTable();
     }
 
     /**
@@ -37,45 +43,17 @@ public class ViewPiecesForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPopupMenu1 = new javax.swing.JPopupMenu();
-        MenuItemEdit = new javax.swing.JMenuItem();
-        MenuItemDelete = new javax.swing.JMenuItem();
         jPnlWindowControls = new javax.swing.JPanel();
         MinimiceControl = new javax.swing.JLabel();
         CloseControl = new javax.swing.JLabel();
         jPnlBody = new javax.swing.JPanel();
         BackControl = new javax.swing.JLabel();
-        TitleView = new javax.swing.JLabel();
         UnderlineTitleView = new javax.swing.JLabel();
-        SearchBy = new javax.swing.JLabel();
-        SearchIcon = new javax.swing.JLabel();
-        txtSearch = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
-        tblPieces = new rojerusan.RSTableMetro();
+        tblOrders = new rojerusan.RSTableMetro();
+        btnCargar = new javax.swing.JButton();
         jPnlBanner = new javax.swing.JPanel();
         BackgroundBanner = new javax.swing.JLabel();
-
-        MenuItemEdit.setBackground(new java.awt.Color(245, 245, 245));
-        MenuItemEdit.setFont(new java.awt.Font("Lato", 0, 12)); // NOI18N
-        MenuItemEdit.setForeground(new java.awt.Color(51, 51, 51));
-        MenuItemEdit.setText("Edit");
-        MenuItemEdit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MenuItemEditActionPerformed(evt);
-            }
-        });
-        jPopupMenu1.add(MenuItemEdit);
-
-        MenuItemDelete.setBackground(new java.awt.Color(245, 245, 245));
-        MenuItemDelete.setFont(new java.awt.Font("Lato", 0, 12)); // NOI18N
-        MenuItemDelete.setForeground(new java.awt.Color(51, 51, 51));
-        MenuItemDelete.setText("Delete");
-        MenuItemDelete.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MenuItemDeleteActionPerformed(evt);
-            }
-        });
-        jPopupMenu1.add(MenuItemDelete);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -126,34 +104,13 @@ public class ViewPiecesForm extends javax.swing.JFrame {
         });
         jPnlBody.add(BackControl, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 20, 32));
 
-        TitleView.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/View Pieces.png"))); // NOI18N
-        TitleView.setAlignmentY(0.0F);
-        jPnlBody.add(TitleView, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 19, 220, 33));
-
         UnderlineTitleView.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Title View Underline.png"))); // NOI18N
         UnderlineTitleView.setAlignmentY(0.0F);
         jPnlBody.add(UnderlineTitleView, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 63, 540, 3));
 
-        SearchBy.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Search By.png"))); // NOI18N
-        SearchBy.setAlignmentY(0.0F);
-        SearchBy.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPnlBody.add(SearchBy, new org.netbeans.lib.awtextra.AbsoluteConstraints(98, 100, 139, 29));
-
-        SearchIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Search Button.png"))); // NOI18N
-        SearchIcon.setAlignmentY(0.0F);
-        SearchIcon.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPnlBody.add(SearchIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(634, 105, 24, 24));
-
-        txtSearch.setFont(new java.awt.Font("Roboto", 0, 20)); // NOI18N
-        txtSearch.setForeground(new java.awt.Color(36, 47, 65));
-        txtSearch.setAlignmentX(0.0F);
-        txtSearch.setAlignmentY(0.0F);
-        txtSearch.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(112, 112, 112)));
-        jPnlBody.add(txtSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(237, 105, 397, 24));
-
-        tblPieces.setModel(new javax.swing.table.DefaultTableModel(
+        tblOrders.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"0001", "Tire", "Tires", "Tires", "10", "79.00"},
+                {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
@@ -169,38 +126,42 @@ public class ViewPiecesForm extends javax.swing.JFrame {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "Id", "Name", "Category", "Description", "Quantity", "Providers"
+                "IdOrder", "NameOrder", "FechaActual", "FechaEntrega", "IdMoto", "Cantidad"
             }
         ));
-        tblPieces.setAlignmentX(0.0F);
-        tblPieces.setAlignmentY(0.0F);
-        tblPieces.setAltoHead(24);
-        tblPieces.setColorBackgoundHead(new java.awt.Color(238, 112, 82));
-        tblPieces.setColorBordeFilas(new java.awt.Color(112, 112, 112));
-        tblPieces.setColorBordeHead(new java.awt.Color(112, 112, 112));
-        tblPieces.setColorFilasBackgound1(new java.awt.Color(112, 112, 112));
-        tblPieces.setColorFilasBackgound2(new java.awt.Color(255, 255, 255));
-        tblPieces.setColorFilasForeground1(new java.awt.Color(36, 47, 65));
-        tblPieces.setColorFilasForeground2(new java.awt.Color(36, 47, 65));
-        tblPieces.setColorSelBackgound(new java.awt.Color(238, 112, 82));
-        tblPieces.setComponentPopupMenu(jPopupMenu1);
-        tblPieces.setFillsViewportHeight(true);
-        tblPieces.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
-        tblPieces.setFuenteFilas(new java.awt.Font("Roboto", 0, 16)); // NOI18N
-        tblPieces.setFuenteFilasSelect(new java.awt.Font("Roboto", 0, 16)); // NOI18N
-        tblPieces.setFuenteHead(new java.awt.Font("Roboto", 0, 16)); // NOI18N
-        tblPieces.setGridColor(new java.awt.Color(153, 153, 153));
-        tblPieces.setGrosorBordeFilas(0);
-        tblPieces.setMultipleSeleccion(false);
-        tblPieces.setPreferredSize(new java.awt.Dimension(595, 350));
-        tblPieces.setRowHeight(24);
-        tblPieces.getTableHeader().setReorderingAllowed(false);
-        jScrollPane2.setViewportView(tblPieces);
-        if (tblPieces.getColumnModel().getColumnCount() > 0) {
-            tblPieces.getColumnModel().getColumn(5).setPreferredWidth(100);
-        }
+        tblOrders.setAlignmentX(0.0F);
+        tblOrders.setAlignmentY(0.0F);
+        tblOrders.setAltoHead(24);
+        tblOrders.setColorBackgoundHead(new java.awt.Color(238, 112, 82));
+        tblOrders.setColorBordeFilas(new java.awt.Color(112, 112, 112));
+        tblOrders.setColorBordeHead(new java.awt.Color(112, 112, 112));
+        tblOrders.setColorFilasBackgound1(new java.awt.Color(112, 112, 112));
+        tblOrders.setColorFilasBackgound2(new java.awt.Color(255, 255, 255));
+        tblOrders.setColorFilasForeground1(new java.awt.Color(36, 47, 65));
+        tblOrders.setColorFilasForeground2(new java.awt.Color(36, 47, 65));
+        tblOrders.setColorSelBackgound(new java.awt.Color(238, 112, 82));
+        tblOrders.setFillsViewportHeight(true);
+        tblOrders.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
+        tblOrders.setFuenteFilas(new java.awt.Font("Roboto", 0, 16)); // NOI18N
+        tblOrders.setFuenteFilasSelect(new java.awt.Font("Roboto", 0, 16)); // NOI18N
+        tblOrders.setFuenteHead(new java.awt.Font("Roboto", 0, 16)); // NOI18N
+        tblOrders.setGridColor(new java.awt.Color(153, 153, 153));
+        tblOrders.setGrosorBordeFilas(0);
+        tblOrders.setMultipleSeleccion(false);
+        tblOrders.setPreferredSize(new java.awt.Dimension(595, 350));
+        tblOrders.setRowHeight(24);
+        tblOrders.getTableHeader().setReorderingAllowed(false);
+        jScrollPane2.setViewportView(tblOrders);
 
-        jPnlBody.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 150, 560, 360));
+        jPnlBody.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 710, 358));
+
+        btnCargar.setText("Cargar");
+        btnCargar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCargarActionPerformed(evt);
+            }
+        });
+        jPnlBody.add(btnCargar, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 80, -1, -1));
 
         getContentPane().add(jPnlBody, new org.netbeans.lib.awtextra.AbsoluteConstraints(295, 45, 755, 530));
 
@@ -235,40 +196,45 @@ public class ViewPiecesForm extends javax.swing.JFrame {
     }//GEN-LAST:event_CloseControlMouseClicked
 
     private void BackControlMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BackControlMouseClicked
-        new Warehouse().setVisible(true);
+        new OrderModule().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_BackControlMouseClicked
 
-    private void MenuItemEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuItemEditActionPerformed
-        int row = tblPieces.getSelectedRow();
-        if(row>=0)
-        {
-            idPiece = tblPieces.getValueAt(row, 0).toString();
-            //Buscar datos en la tabla segun el id para cargarlos en el otro formulario
-            new EditPieceForm(idPiece).setVisible(true);
-            this.dispose();
-        }
-    }//GEN-LAST:event_MenuItemEditActionPerformed
+    private void btnCargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargarActionPerformed
+        // TODO add your handling code here:
+        RefreshTable();
+    }//GEN-LAST:event_btnCargarActionPerformed
+    
+    private void RefreshTable()
+    {
+        ArrayList<Order> array = new ArrayList<Order>();
+          
+        array = orderDao.viewOrder();
+        DefaultTableModel model = new DefaultTableModel();
+        
+        model.addColumn("IdOrder");
+        model.addColumn("NameOrder");
+        model.addColumn("FechaActual");
+        model.addColumn("FechaEntrega");
+        model.addColumn("IdMoto");
+        model.addColumn("Cantidad");
+        tblOrders.setModel(model);
+        
+        Object[] column=new Object[6];
+        for(int i=0; i<array.size(); i++){
+            column[0]=array.get(i).getIdOrder();
+            column[1]=array.get(i).getNameOder();
+            column[2]=array.get(i).getFechaActual();
+            column[3]=array.get(i).getFechaEntrega();
+            column[4]=array.get(i).getIdMoto();
+            column[5]=array.get(i).getCantidad();
 
-    private void MenuItemDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuItemDeleteActionPerformed
-        int row = tblPieces.getSelectedRow();
-        if(row>=0)
-        {
-            idPiece = tblPieces.getValueAt(row, 0).toString();
-            ConfirmDialog dialog = new ConfirmDialog(this, true);
-            dialog.dialogText.setText("Are you sure to delete this item?");
-            dialog.setVisible(true);
-            if(dialog.getReturnStatus()==1)
-            {
-                pieceDAO.deletePiece(Integer.parseInt(idPiece));
-                //Sentencia SQL para eliminar dato de la tabla
-                //Actualizar Tabla
-                new Warehouse().setVisible(true);
-                this.dispose();
-            }
+            model.addRow(column);
+            
+            
         }
-    }//GEN-LAST:event_MenuItemDeleteActionPerformed
-
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -280,26 +246,27 @@ public class ViewPiecesForm extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Windows".equals(info.getName())) {
+                if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ViewPiecesForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewOrderForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ViewPiecesForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewOrderForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ViewPiecesForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewOrderForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ViewPiecesForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewOrderForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ViewPiecesForm().setVisible(true);
+                new ViewOrderForm().setVisible(true);
             }
         });
     }
@@ -308,19 +275,13 @@ public class ViewPiecesForm extends javax.swing.JFrame {
     private javax.swing.JLabel BackControl;
     private javax.swing.JLabel BackgroundBanner;
     private javax.swing.JLabel CloseControl;
-    private javax.swing.JMenuItem MenuItemDelete;
-    private javax.swing.JMenuItem MenuItemEdit;
     private javax.swing.JLabel MinimiceControl;
-    private javax.swing.JLabel SearchBy;
-    private javax.swing.JLabel SearchIcon;
-    private javax.swing.JLabel TitleView;
     private javax.swing.JLabel UnderlineTitleView;
+    private javax.swing.JButton btnCargar;
     private javax.swing.JPanel jPnlBanner;
     private javax.swing.JPanel jPnlBody;
     private javax.swing.JPanel jPnlWindowControls;
-    private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JScrollPane jScrollPane2;
-    private rojerusan.RSTableMetro tblPieces;
-    private javax.swing.JTextField txtSearch;
+    private rojerusan.RSTableMetro tblOrders;
     // End of variables declaration//GEN-END:variables
 }

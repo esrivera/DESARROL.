@@ -5,6 +5,7 @@
  */
 package View;
 
+import Model.Link;
 import Model.Order;
 import Model.OrderDAO;
 import java.text.DateFormat;
@@ -278,7 +279,7 @@ public class AddOrderForm extends javax.swing.JFrame {
     }//GEN-LAST:event_CloseControlMouseClicked
 
     private void BackControlMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BackControlMouseClicked
-        new Warehouse().setVisible(true);
+        new OrderModule().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_BackControlMouseClicked
 

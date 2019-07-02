@@ -25,6 +25,7 @@ public class DeleteConcessionerForm extends javax.swing.JFrame {
         RefreshTable();
         initComponents();
         this.setLocationRelativeTo(null);
+        RefreshTable();
     }
 
     /**
@@ -211,7 +212,7 @@ public class DeleteConcessionerForm extends javax.swing.JFrame {
     }//GEN-LAST:event_CloseControlMouseClicked
 
     private void BackControlMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BackControlMouseClicked
-        new Concessioner().setVisible(true);
+        new OrderModule().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_BackControlMouseClicked
 

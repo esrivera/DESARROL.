@@ -5,30 +5,33 @@
  */
 package View;
 
-import Model.Link;
 import Model.Order;
 import Model.OrderDAO;
+import Model.TextPrompt;
 import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 
 /**
  *
- * @author Galito
+ * @author Randy
  */
 public class AddOrderForm extends javax.swing.JFrame {
-
+    
     DateFormat dateFormat = DateFormat.getDateInstance();
         
     OrderDAO orderDao = new OrderDAO();
-    
+
     /**
      * Creates new form AddOrderForm
      */
     public AddOrderForm() {
         initComponents();
+        this.setLocationRelativeTo(null);
+        
+        TextPrompt orderNameHint = new TextPrompt("Enter a name", txtOrderName);
+        TextPrompt motorcycleCodeHint = new TextPrompt("Enter the code", txtMotoCode);
+        TextPrompt idHint = new TextPrompt("Order Id", txtIdOrder);
     }
     
-   
     public void save(){
         String nameOrder = "";
         String currentDateOrder = "";
@@ -42,9 +45,9 @@ public class AddOrderForm extends javax.swing.JFrame {
         nameOrder= txtOrderName.getText();
        
         currentDateOrder = dateFormat.format(jDateNowOrder.getDate());
-        deliveryDateOrder= dateFormat.format(jDateDeliveryOrder.getDate());
+        deliveryDateOrder= dateFormat.format(jDateNowOrder.getDate());
         idMoto= Integer.parseInt(txtMotoCode.getText());
-        quantity= (Integer)jsCantidad.getValue();
+        quantity= (Integer)jsQuantity.getValue();
         Order order = new Order(idOrder,nameOrder,currentDateOrder,deliveryDateOrder,idMoto,quantity);
         orderDao.registerConcessioner(order);
           
@@ -55,8 +58,8 @@ public class AddOrderForm extends javax.swing.JFrame {
         txtOrderName.setText("");
         txtMotoCode.setText("");
         jDateNowOrder.setDate(null);
-        jDateDeliveryOrder.setDate(null);
-        jsCantidad.setValue(0);
+        jDateNowOrder.setDate(null);
+        jsQuantity.setValue(0);
     }
 
     /**
@@ -68,12 +71,12 @@ public class AddOrderForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        BackgroundBanner = new javax.swing.JLabel();
         jPnlWindowControls = new javax.swing.JPanel();
         MinimiceControl = new javax.swing.JLabel();
         CloseControl = new javax.swing.JLabel();
         jPnlBody = new javax.swing.JPanel();
         BackControl = new javax.swing.JLabel();
+        TitleView = new javax.swing.JLabel();
         UnderlineTitleView = new javax.swing.JLabel();
         RegistryButton = new javax.swing.JLabel();
         CancelButton = new javax.swing.JLabel();
@@ -88,16 +91,16 @@ public class AddOrderForm extends javax.swing.JFrame {
         txtMotoCode = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
         jDateNowOrder = new com.toedter.calendar.JDateChooser();
-        jsCantidad = new javax.swing.JSpinner();
         jDateDeliveryOrder = new com.toedter.calendar.JDateChooser();
+        jsQuantity = new javax.swing.JSpinner();
+        jPnlBanner = new javax.swing.JPanel();
+        BackgroundBanner = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        BackgroundBanner.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BackgroundBanner.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Banner1.png"))); // NOI18N
-        BackgroundBanner.setAlignmentY(0.0F);
-        BackgroundBanner.setPreferredSize(new java.awt.Dimension(296, 577));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPnlWindowControls.setBackground(new java.awt.Color(255, 255, 255));
         jPnlWindowControls.setName(""); // NOI18N
@@ -128,6 +131,8 @@ public class AddOrderForm extends javax.swing.JFrame {
         });
         jPnlWindowControls.add(CloseControl, new org.netbeans.lib.awtextra.AbsoluteConstraints(713, 15, -1, 27));
 
+        getContentPane().add(jPnlWindowControls, new org.netbeans.lib.awtextra.AbsoluteConstraints(295, 0, 755, 45));
+
         jPnlBody.setBackground(new java.awt.Color(255, 255, 255));
         jPnlBody.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -140,6 +145,10 @@ public class AddOrderForm extends javax.swing.JFrame {
             }
         });
         jPnlBody.add(BackControl, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 20, 32));
+
+        TitleView.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Order Registry Text.png"))); // NOI18N
+        TitleView.setAlignmentY(0.0F);
+        jPnlBody.add(TitleView, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 19, 220, 33));
 
         UnderlineTitleView.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Title View Underline.png"))); // NOI18N
         UnderlineTitleView.setAlignmentY(0.0F);
@@ -154,7 +163,6 @@ public class AddOrderForm extends javax.swing.JFrame {
             }
         });
         jPnlBody.add(RegistryButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(228, 435, 140, 35));
-        RegistryButton.getAccessibleContext().setAccessibleDescription("");
 
         CancelButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Cancel Button.png"))); // NOI18N
         CancelButton.setAlignmentY(0.0F);
@@ -168,97 +176,99 @@ public class AddOrderForm extends javax.swing.JFrame {
 
         Id.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         Id.setForeground(new java.awt.Color(238, 112, 82));
-        Id.setText("Date");
+        Id.setText("Date:");
         Id.setAlignmentY(0.0F);
-        jPnlBody.add(Id, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 130, 60, 19));
+        jPnlBody.add(Id, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 131, 40, 19));
 
         Name.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         Name.setForeground(new java.awt.Color(238, 112, 82));
-        Name.setText("Id Order");
+        Name.setText("Id Order:");
         Name.setAlignmentY(0.0F);
-        jPnlBody.add(Name, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 131, 60, -1));
+        jPnlBody.add(Name, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 131, 80, -1));
 
         Category.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         Category.setForeground(new java.awt.Color(238, 112, 82));
-        Category.setText("Oder´s Name:");
+        Category.setText("Order's Name:");
         Category.setAlignmentY(0.0F);
         jPnlBody.add(Category, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 190, 110, 19));
 
         Description.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         Description.setForeground(new java.awt.Color(238, 112, 82));
-        Description.setText("Delivery Date");
+        Description.setText("Delivery Date:");
         Description.setAlignmentY(0.0F);
         jPnlBody.add(Description, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 246, 100, 19));
 
         Quantity.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         Quantity.setForeground(new java.awt.Color(238, 112, 82));
-        Quantity.setText("Motorcycle Code");
+        Quantity.setText("Motorcycle Code:");
         Quantity.setAlignmentY(0.0F);
         jPnlBody.add(Quantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 308, 130, 19));
 
         Price.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         Price.setForeground(new java.awt.Color(238, 112, 82));
-        Price.setText("Amount");
+        Price.setText("Quantity:");
         Price.setAlignmentY(0.0F);
-        jPnlBody.add(Price, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 367, 70, 19));
+        jPnlBody.add(Price, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 367, 90, 19));
 
+        txtIdOrder.setBackground(new java.awt.Color(255, 255, 255));
         txtIdOrder.setFont(new java.awt.Font("Roboto", 0, 20)); // NOI18N
         txtIdOrder.setForeground(new java.awt.Color(36, 47, 65));
         txtIdOrder.setAlignmentX(0.0F);
         txtIdOrder.setAlignmentY(0.0F);
-        jPnlBody.add(txtIdOrder, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 130, 60, 24));
+        txtIdOrder.setBorder(null);
+        jPnlBody.add(txtIdOrder, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 129, 194, 24));
 
+        txtOrderName.setBackground(new java.awt.Color(255, 255, 255));
         txtOrderName.setFont(new java.awt.Font("Roboto", 0, 20)); // NOI18N
         txtOrderName.setForeground(new java.awt.Color(36, 47, 65));
         txtOrderName.setAlignmentX(0.0F);
         txtOrderName.setAlignmentY(0.0F);
-        jPnlBody.add(txtOrderName, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 190, 194, 24));
+        txtOrderName.setBorder(null);
+        jPnlBody.add(txtOrderName, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 188, 194, 24));
 
+        txtMotoCode.setBackground(new java.awt.Color(255, 255, 255));
         txtMotoCode.setFont(new java.awt.Font("Roboto", 0, 20)); // NOI18N
         txtMotoCode.setForeground(new java.awt.Color(36, 47, 65));
         txtMotoCode.setAlignmentX(0.0F);
         txtMotoCode.setAlignmentY(0.0F);
-        jPnlBody.add(txtMotoCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 310, 120, 20));
+        txtMotoCode.setBorder(null);
+        jPnlBody.add(txtMotoCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 306, 172, 24));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Piece Name Underline.png"))); // NOI18N
         jLabel1.setAlignmentY(0.0F);
-        jPnlBody.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 150, 60, 10));
+        jPnlBody.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 153, 194, 1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Piece Name Underline.png"))); // NOI18N
         jLabel2.setAlignmentY(0.0F);
-        jPnlBody.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 210, 194, 10));
-        jPnlBody.add(jDateNowOrder, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 130, -1, -1));
-        jPnlBody.add(jsCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 360, -1, -1));
-        jPnlBody.add(jDateDeliveryOrder, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 240, -1, -1));
+        jPnlBody.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 213, 194, 1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(BackgroundBanner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPnlWindowControls, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPnlBody, javax.swing.GroupLayout.PREFERRED_SIZE, 755, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPnlWindowControls, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPnlBody, javax.swing.GroupLayout.PREFERRED_SIZE, 530, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(BackgroundBanner, javax.swing.GroupLayout.PREFERRED_SIZE, 575, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(6, 6, 6))
-        );
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Piece Name Underline.png"))); // NOI18N
+        jLabel4.setAlignmentY(0.0F);
+        jPnlBody.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 330, 194, 1));
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Piece Name Underline.png"))); // NOI18N
+        jLabel5.setAlignmentY(0.0F);
+        jPnlBody.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 390, 194, 1));
+        jPnlBody.add(jDateNowOrder, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 127, -1, -1));
+        jPnlBody.add(jDateDeliveryOrder, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 240, -1, -1));
+
+        jsQuantity.setBorder(null);
+        jsQuantity.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jPnlBody.add(jsQuantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 360, 190, -1));
+
+        getContentPane().add(jPnlBody, new org.netbeans.lib.awtextra.AbsoluteConstraints(295, 45, 755, 530));
+
+        jPnlBanner.setBackground(new java.awt.Color(255, 255, 255));
+        jPnlBanner.setName("jPnlBanner"); // NOI18N
+        jPnlBanner.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        BackgroundBanner.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        BackgroundBanner.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Banner1.png"))); // NOI18N
+        BackgroundBanner.setAlignmentY(0.0F);
+        BackgroundBanner.setPreferredSize(new java.awt.Dimension(296, 577));
+        jPnlBanner.add(BackgroundBanner, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 575));
+
+        getContentPane().add(jPnlBanner, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 296, 575));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -284,7 +294,7 @@ public class AddOrderForm extends javax.swing.JFrame {
     }//GEN-LAST:event_BackControlMouseClicked
 
     private void RegistryButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RegistryButtonMouseClicked
-        if("".equals(txtIdOrder.getText()) || "".equals(txtOrderName.getText()) || "".equals(txtMotoCode.getText())
+         if("".equals(txtIdOrder.getText()) || "".equals(txtOrderName.getText()) || "".equals(txtMotoCode.getText())
             || "".equals(jDateNowOrder.getDateFormatString()) || "".equals(jDateDeliveryOrder.getDateFormatString()))
         {
             OkDialog dialog = new OkDialog(this, true);
@@ -314,7 +324,7 @@ public class AddOrderForm extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -351,14 +361,18 @@ public class AddOrderForm extends javax.swing.JFrame {
     private javax.swing.JLabel Price;
     private javax.swing.JLabel Quantity;
     private javax.swing.JLabel RegistryButton;
+    private javax.swing.JLabel TitleView;
     private javax.swing.JLabel UnderlineTitleView;
     private com.toedter.calendar.JDateChooser jDateDeliveryOrder;
     private com.toedter.calendar.JDateChooser jDateNowOrder;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JPanel jPnlBanner;
     private javax.swing.JPanel jPnlBody;
     private javax.swing.JPanel jPnlWindowControls;
-    private javax.swing.JSpinner jsCantidad;
+    private javax.swing.JSpinner jsQuantity;
     private javax.swing.JTextField txtIdOrder;
     private javax.swing.JTextField txtMotoCode;
     private javax.swing.JTextField txtOrderName;

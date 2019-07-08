@@ -5,8 +5,6 @@
  */
 package View;
 
-import Model.ConcessionerDAO;
-import Model.ConcessionerVO;
 import Model.Order;
 import Model.OrderDAO;
 import java.util.ArrayList;
@@ -17,18 +15,14 @@ import javax.swing.table.DefaultTableModel;
  * @author Randy
  */
 public class ViewOrderForm extends javax.swing.JFrame {
-
-    ConcessionerDAO concessionerDAO = new ConcessionerDAO();
-    //ConcessionerVO concessionerVO;
+    
     OrderDAO orderDao = new OrderDAO();
     Order order;
-    
-    
+
     /**
-     * Creates new form ViewConcessionerForm
+     * Creates new form ViewOrderForm
      */
     public ViewOrderForm() {
-        
         initComponents();
         this.setLocationRelativeTo(null);
         RefreshTable();
@@ -48,16 +42,14 @@ public class ViewOrderForm extends javax.swing.JFrame {
         CloseControl = new javax.swing.JLabel();
         jPnlBody = new javax.swing.JPanel();
         BackControl = new javax.swing.JLabel();
+        TitleView = new javax.swing.JLabel();
         UnderlineTitleView = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblOrders = new rojerusan.RSTableMetro();
-        btnCharge = new javax.swing.JButton();
         jPnlBanner = new javax.swing.JPanel();
         BackgroundBanner = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setUndecorated(true);
-        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPnlWindowControls.setBackground(new java.awt.Color(255, 255, 255));
@@ -104,6 +96,10 @@ public class ViewOrderForm extends javax.swing.JFrame {
         });
         jPnlBody.add(BackControl, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 20, 32));
 
+        TitleView.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/View Concessioners Text.png"))); // NOI18N
+        TitleView.setAlignmentY(0.0F);
+        jPnlBody.add(TitleView, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 19, 320, 33));
+
         UnderlineTitleView.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Title View Underline.png"))); // NOI18N
         UnderlineTitleView.setAlignmentY(0.0F);
         jPnlBody.add(UnderlineTitleView, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 63, 540, 3));
@@ -126,7 +122,7 @@ public class ViewOrderForm extends javax.swing.JFrame {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "IdOrder", "NameOrder", "CurrentDate", "DeliveryDate", "IdMoto", "Quantity"
+                "Id Order", "Order's Name", "Current Date", "Delivery Date", "Motorcycle Code", "Quantity"
             }
         ));
         tblOrders.setAlignmentX(0.0F);
@@ -144,7 +140,7 @@ public class ViewOrderForm extends javax.swing.JFrame {
         tblOrders.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         tblOrders.setFuenteFilas(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         tblOrders.setFuenteFilasSelect(new java.awt.Font("Roboto", 0, 16)); // NOI18N
-        tblOrders.setFuenteHead(new java.awt.Font("Roboto", 0, 16)); // NOI18N
+        tblOrders.setFuenteHead(new java.awt.Font("Roboto", 0, 13)); // NOI18N
         tblOrders.setGridColor(new java.awt.Color(153, 153, 153));
         tblOrders.setGrosorBordeFilas(0);
         tblOrders.setMultipleSeleccion(false);
@@ -153,15 +149,7 @@ public class ViewOrderForm extends javax.swing.JFrame {
         tblOrders.getTableHeader().setReorderingAllowed(false);
         jScrollPane2.setViewportView(tblOrders);
 
-        jPnlBody.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 710, 358));
-
-        btnCharge.setText("Charge");
-        btnCharge.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnChargeActionPerformed(evt);
-            }
-        });
-        jPnlBody.add(btnCharge, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 80, -1, -1));
+        jPnlBody.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(102, 98, 560, 358));
 
         getContentPane().add(jPnlBody, new org.netbeans.lib.awtextra.AbsoluteConstraints(295, 45, 755, 530));
 
@@ -200,11 +188,6 @@ public class ViewOrderForm extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_BackControlMouseClicked
 
-    private void btnChargeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChargeActionPerformed
-        // TODO add your handling code here:
-        RefreshTable();
-    }//GEN-LAST:event_btnChargeActionPerformed
-    
     private void RefreshTable()
     {
         ArrayList<Order> array = new ArrayList<Order>();
@@ -246,7 +229,7 @@ public class ViewOrderForm extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -260,7 +243,6 @@ public class ViewOrderForm extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(ViewOrderForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
@@ -276,8 +258,8 @@ public class ViewOrderForm extends javax.swing.JFrame {
     private javax.swing.JLabel BackgroundBanner;
     private javax.swing.JLabel CloseControl;
     private javax.swing.JLabel MinimiceControl;
+    private javax.swing.JLabel TitleView;
     private javax.swing.JLabel UnderlineTitleView;
-    private javax.swing.JButton btnCharge;
     private javax.swing.JPanel jPnlBanner;
     private javax.swing.JPanel jPnlBody;
     private javax.swing.JPanel jPnlWindowControls;

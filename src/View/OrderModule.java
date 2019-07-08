@@ -7,7 +7,7 @@ package View;
 
 /**
  *
- * @author Galito
+ * @author Randy
  */
 public class OrderModule extends javax.swing.JFrame {
 
@@ -28,24 +28,31 @@ public class OrderModule extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPnlBanner = new javax.swing.JPanel();
         BackgroundBanner = new javax.swing.JLabel();
         jPnlWindowControls = new javax.swing.JPanel();
         MinimiceControl = new javax.swing.JLabel();
         CloseControl = new javax.swing.JLabel();
         jPnlBody = new javax.swing.JPanel();
         BackControl = new javax.swing.JLabel();
-        btnOrderAdd = new javax.swing.JButton();
-        btnEditOrder = new javax.swing.JButton();
-        bntViewOrder = new javax.swing.JButton();
-        btnDeleteOrder = new javax.swing.JButton();
+        TitleView = new javax.swing.JLabel();
+        AddUserOption = new javax.swing.JLabel();
+        EditUserOption = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setUndecorated(true);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPnlBanner.setBackground(new java.awt.Color(255, 255, 255));
+        jPnlBanner.setName("jPnlBanner"); // NOI18N
+        jPnlBanner.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         BackgroundBanner.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         BackgroundBanner.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Banner1.png"))); // NOI18N
         BackgroundBanner.setAlignmentY(0.0F);
         BackgroundBanner.setPreferredSize(new java.awt.Dimension(296, 577));
+        jPnlBanner.add(BackgroundBanner, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 575));
+
+        getContentPane().add(jPnlBanner, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 296, 575));
 
         jPnlWindowControls.setBackground(new java.awt.Color(255, 255, 255));
         jPnlWindowControls.setName(""); // NOI18N
@@ -61,7 +68,7 @@ public class OrderModule extends javax.swing.JFrame {
                 MinimiceControlMouseClicked(evt);
             }
         });
-        jPnlWindowControls.add(MinimiceControl, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 10, -1, 27));
+        jPnlWindowControls.add(MinimiceControl, new org.netbeans.lib.awtextra.AbsoluteConstraints(675, 15, -1, 27));
 
         CloseControl.setFont(new java.awt.Font("Font Awesome 5 Free Regular", 0, 20)); // NOI18N
         CloseControl.setForeground(new java.awt.Color(153, 153, 153));
@@ -74,7 +81,9 @@ public class OrderModule extends javax.swing.JFrame {
                 CloseControlMouseClicked(evt);
             }
         });
-        jPnlWindowControls.add(CloseControl, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 10, -1, 27));
+        jPnlWindowControls.add(CloseControl, new org.netbeans.lib.awtextra.AbsoluteConstraints(713, 15, -1, 27));
+
+        getContentPane().add(jPnlWindowControls, new org.netbeans.lib.awtextra.AbsoluteConstraints(295, 0, 755, 45));
 
         jPnlBody.setBackground(new java.awt.Color(255, 255, 255));
         jPnlBody.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -89,60 +98,29 @@ public class OrderModule extends javax.swing.JFrame {
         });
         jPnlBody.add(BackControl, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 20, 32));
 
-        btnOrderAdd.setText("Add Order");
-        btnOrderAdd.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnOrderAddActionPerformed(evt);
+        TitleView.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Orders Text.png"))); // NOI18N
+        TitleView.setAlignmentY(0.0F);
+        jPnlBody.add(TitleView, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 19, 198, 33));
+
+        AddUserOption.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Add Order.png"))); // NOI18N
+        AddUserOption.setAlignmentY(0.0F);
+        AddUserOption.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                AddUserOptionMouseClicked(evt);
             }
         });
-        jPnlBody.add(btnOrderAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 170, -1, -1));
+        jPnlBody.add(AddUserOption, new org.netbeans.lib.awtextra.AbsoluteConstraints(189, 107, 124, 150));
 
-        btnEditOrder.setText("Modify Order");
-        btnEditOrder.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEditOrderActionPerformed(evt);
+        EditUserOption.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/View Orders.png"))); // NOI18N
+        EditUserOption.setAlignmentY(0.0F);
+        EditUserOption.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                EditUserOptionMouseClicked(evt);
             }
         });
-        jPnlBody.add(btnEditOrder, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 150, -1, -1));
+        jPnlBody.add(EditUserOption, new org.netbeans.lib.awtextra.AbsoluteConstraints(449, 107, 109, 151));
 
-        bntViewOrder.setText("View Order");
-        bntViewOrder.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bntViewOrderActionPerformed(evt);
-            }
-        });
-        jPnlBody.add(bntViewOrder, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 360, -1, -1));
-
-        btnDeleteOrder.setText("Delete Order");
-        btnDeleteOrder.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDeleteOrderActionPerformed(evt);
-            }
-        });
-        jPnlBody.add(btnDeleteOrder, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 350, -1, -1));
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(BackgroundBanner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPnlBody, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPnlWindowControls, javax.swing.GroupLayout.DEFAULT_SIZE, 860, Short.MAX_VALUE)))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(BackgroundBanner, javax.swing.GroupLayout.PREFERRED_SIZE, 575, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPnlWindowControls, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPnlBody, javax.swing.GroupLayout.PREFERRED_SIZE, 525, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
-        );
+        getContentPane().add(jPnlBody, new org.netbeans.lib.awtextra.AbsoluteConstraints(295, 45, 755, 530));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -153,7 +131,7 @@ public class OrderModule extends javax.swing.JFrame {
 
     private void CloseControlMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CloseControlMouseClicked
         ConfirmDialog dialog = new ConfirmDialog(this, true);
-        dialog.dialogText.setText("Do you want to exit?");
+        dialog.dialogText.setText("Do you want to logout?");
         dialog.setVisible(true);
         if(dialog.getReturnStatus()==1)
         {
@@ -167,29 +145,17 @@ public class OrderModule extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_BackControlMouseClicked
 
-    private void btnOrderAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrderAddActionPerformed
+    private void AddUserOptionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddUserOptionMouseClicked
         // TODO add your handling code here:
         new AddOrderForm().setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_btnOrderAddActionPerformed
+    }//GEN-LAST:event_AddUserOptionMouseClicked
 
-    private void bntViewOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntViewOrderActionPerformed
-        // TODO add your handling code here
+    private void EditUserOptionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EditUserOptionMouseClicked
+        // TODO add your handling code here:
         new ViewOrderForm().setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_bntViewOrderActionPerformed
-
-    private void btnDeleteOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteOrderActionPerformed
-        // TODO add your handling code here:
-        new DeleteOrderForm().setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_btnDeleteOrderActionPerformed
-
-    private void btnEditOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditOrderActionPerformed
-        // TODO add your handling code here:
-        new ModifyOrderForm().setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_btnEditOrderActionPerformed
+    }//GEN-LAST:event_EditUserOptionMouseClicked
 
     /**
      * @param args the command line arguments
@@ -202,7 +168,7 @@ public class OrderModule extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -227,14 +193,14 @@ public class OrderModule extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel AddUserOption;
     private javax.swing.JLabel BackControl;
     private javax.swing.JLabel BackgroundBanner;
     private javax.swing.JLabel CloseControl;
+    private javax.swing.JLabel EditUserOption;
     private javax.swing.JLabel MinimiceControl;
-    private javax.swing.JButton bntViewOrder;
-    private javax.swing.JButton btnDeleteOrder;
-    private javax.swing.JButton btnEditOrder;
-    private javax.swing.JButton btnOrderAdd;
+    private javax.swing.JLabel TitleView;
+    private javax.swing.JPanel jPnlBanner;
     private javax.swing.JPanel jPnlBody;
     private javax.swing.JPanel jPnlWindowControls;
     // End of variables declaration//GEN-END:variables
